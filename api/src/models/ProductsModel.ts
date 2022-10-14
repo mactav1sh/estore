@@ -10,10 +10,13 @@ const productsSchema = new mongoose.Schema<IProducts>(
       type: String,
       required: [true, 'a product must have a sku'],
       unique: true,
+      minlength: [8, 'sku must b 8 characters '],
+      maxlength: [8, 'sku must be 8 characters '],
     },
-    owner: {
+    ownerID: {
       type: mongoose.Types.ObjectId,
       ref: 'User',
+      immutable: [true, `this field can't be modified `],
     },
     title: {
       type: String,
@@ -29,7 +32,6 @@ const productsSchema = new mongoose.Schema<IProducts>(
     description: {
       type: String,
       required: [true, 'a product must have an email'],
-      unique: true,
       maxlength: [30, 'description must be less than 30 characters'],
     },
     price: {
@@ -54,7 +56,7 @@ const productsSchema = new mongoose.Schema<IProducts>(
       type: Number,
       default: 1,
     },
-    image: {
+    images: {
       type: [String],
       validate: [validateArrLength, 'max number of images is 5'],
     },

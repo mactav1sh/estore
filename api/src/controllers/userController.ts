@@ -58,8 +58,8 @@ export const updateUser = async (
   next: NextFunction
 ) => {
   try {
-    // 1) check if the current user id = the user's id that will be updated
-    if (req.params.id !== req.user?.id) {
+    // 1) check if the current user id = the user's id that will be delete and the user is not an admin
+    if (req.params.id !== req.user?.id && req.user?.role != 'admin') {
       return next(
         new AppError(403, 'you are not allowed to  perform this action')
       );
@@ -107,8 +107,8 @@ export const deleteUser = async (
   next: NextFunction
 ) => {
   try {
-    // 1) check if the current user id = the user's id that will be delete
-    if (req.params.id !== req.user?.id) {
+    // 1) check if the current user id = the user's id that will be delete and the user is not an admin
+    if (req.params.id !== req.user?.id && req.user?.role != 'admin') {
       return next(
         new AppError(403, 'you are not allowed to  perform this action')
       );
@@ -117,6 +117,7 @@ export const deleteUser = async (
     // 2) find user and delete it
     await User.findByIdAndDelete(req.params.id);
 
+    // 3) send confirmation
     res.status(204).json({
       status: 'success',
     });

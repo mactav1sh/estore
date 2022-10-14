@@ -6,7 +6,7 @@ import User from '../models/UserModel';
 
 // RESTRICT ROLES
 export function restrictRoute(...rolesArr: string[]) {
-  // this function will take array of roles and return a middleware
+  // this function will take an array of roles and return a middleware
   return (req: IUserInfoRequest, _res: Response, next: NextFunction) => {
     // 1) get the role from the req.user object
     const userRole = req.user?.role;
@@ -29,10 +29,8 @@ export const protectRoute = async (
   try {
     // 1) get token from headers
     const token = req.headers.authorization?.split(' ')[1] as string;
-    console.log(token);
     // 2) check if there's a token
     if (!token) return next(new AppError(401, 'please log in to gain access'));
-
     // 3) verify token and (IMPORTANT) provide a callback to make .verify async
     const handleVerification = async (
       err: VerifyErrors,
