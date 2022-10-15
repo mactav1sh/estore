@@ -37,7 +37,7 @@ export const getProduct = async (
 ) => {
   try {
     // 1) get product
-    const product = await Product.findById(req.params.id);
+    const product = await Product.findById(req.params.id).populate('reviewIDs');
 
     // 2) check if there's a product
     if (!product)
@@ -82,7 +82,7 @@ export const createProduct = async (
       images: req.body.images,
     };
     // 3) create product
-    const product = await Product.create({
+    const newProduct = await Product.create({
       ownerID: userId,
       sku,
       ...dataObj,
@@ -91,7 +91,7 @@ export const createProduct = async (
     // 4) send data
     res.status(201).json({
       status: 'success',
-      data: { product },
+      data: { product: newProduct },
     });
   } catch (error) {
     next(error);
@@ -106,7 +106,7 @@ export const updateProduct = async (
 ) => {
   try {
     // 1) check if the req.user.id === req.params.ownerId and the user is not an admin
-    if (req.user?.id !== req.params.ownerId && req.user?.role != 'admin') {
+    if (req.user?.id !== req.params.ownerID && req.user?.role != 'admin') {
       return next(
         new AppError(403, 'you are not allowed to  perform this action')
       );
@@ -124,9 +124,9 @@ export const updateProduct = async (
       images: req.body.images,
     };
 
-    // 3) find  and update user(if it exists)
+    // 3) find  and update product (if it exists)
     const updatedProduct = await Product.findByIdAndUpdate(
-      req.params.id,
+      req.params.productID,
       { ...updatesObj },
       {
         new: true,
@@ -135,16 +135,19 @@ export const updateProduct = async (
     );
 
     // 4) check if there's a product with this id
-    if (!updateProduct)
+    if (!updatedProduct)
       return next(
-        new AppError(404, `there is no document with id:${req.params.id} `)
+        new AppError(
+          404,
+          `there is no document with id:${req.params.productID} `
+        )
       );
 
     // 5) send data
     res.status(200).json({
       status: 'success',
       data: {
-        updatedProduct,
+        product: updatedProduct,
       },
     });
   } catch (error) {
@@ -160,18 +163,28 @@ export const deleteProduct = async (
 ) => {
   try {
     // 1) check if the req.user.id === req.params.ownerId and the user is not an admin
-    if (req.user?.id !== req.params.ownerId && req.user?.role != 'admin') {
+    if (req.user?.id !== req.params.ownerID && req.user?.role != 'admin') {
       return next(
         new AppError(403, 'you are not allowed to  perform this action')
       );
     }
 
     // 2) find product and delete it
-    await Product.findByIdAndDelete(req.params.id);
+    const product = await Product.findByIdAndDelete(req.params.productID);
 
-    // 3) send confirmation
+    // 3) check if there's a product with this id
+    if (!product)
+      return next(
+        new AppError(
+          404,
+          `there is no document with id:${req.params.productID} `
+        )
+      );
+
+    // 4) send confirmation
     res.status(204).json({
       status: 'success',
+      data: null,
     });
   } catch (error) {
     next(error);

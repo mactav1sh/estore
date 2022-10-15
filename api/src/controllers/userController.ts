@@ -83,7 +83,7 @@ export const updateUser = async (
     );
 
     // 4) check if there's a user with this id
-    if (!updateUser)
+    if (!updatedUser)
       return next(
         new AppError(404, `there is no document with id:${req.params.id} `)
       );
@@ -92,7 +92,7 @@ export const updateUser = async (
     res.status(200).json({
       status: 'success',
       data: {
-        updatedUser,
+        user: updatedUser,
       },
     });
   } catch (error) {
@@ -115,9 +115,15 @@ export const deleteUser = async (
     }
 
     // 2) find user and delete it
-    await User.findByIdAndDelete(req.params.id);
+    const user = await User.findByIdAndDelete(req.params.id);
 
-    // 3) send confirmation
+    // 3) check if there's a user with this id
+    if (!user)
+      return next(
+        new AppError(404, `there is no document with id:${req.params.id} `)
+      );
+
+    // 4) send confirmation
     res.status(204).json({
       status: 'success',
     });

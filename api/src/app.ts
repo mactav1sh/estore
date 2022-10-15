@@ -4,11 +4,12 @@ import helmet from 'helmet';
 import mongoSanitize from 'express-mongo-sanitize';
 import rateLimit from 'express-rate-limit';
 import morgan from 'morgan';
-import cookieParser from 'cookie-parser';
+// import cookieParser from 'cookie-parser';
 import wrongRouteHandler from './utils/wrongRouteHandler';
 import globalErrorHandler from './utils/GlobalErrorHandler';
 import userRouter from './routes/userRoute';
 import productsRouter from './routes/productsRoute';
+import reviewsRouter from './routes/reviewsRoute';
 
 // Initialize server
 const app = express();
@@ -35,11 +36,12 @@ if (process.env.NODE_ENV === 'development') {
 }
 // - request.body & request.cookies
 app.use(express.json());
-app.use(cookieParser());
+// app.use(cookieParser());
 
 // ROUTES
-app.use('/api/v1/products', productsRouter);
 app.use('/api/v1/users', userRouter);
+app.use('/api/v1/products', productsRouter);
+app.use('/api/v1/reviews', reviewsRouter);
 
 // WRONG ROUTE HANDLER
 app.all('*', wrongRouteHandler);

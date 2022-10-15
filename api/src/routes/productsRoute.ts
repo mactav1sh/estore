@@ -12,14 +12,14 @@ router.get('/', productController.getProducts);
 router.get('/:id', productController.getProduct);
 // UPDATE PRODUCT
 router.patch(
-  '/:id',
+  '/:ownerID/:productID',
   protectRoute,
   restrictRoute('user', 'admin'),
   productController.updateProduct
 );
 // DELETE PRODUCT
 router.delete(
-  '/:id',
+  '/:ownerID/:productID',
   protectRoute,
   restrictRoute('user', 'admin'),
   productController.deleteProduct

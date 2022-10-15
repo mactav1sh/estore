@@ -1,10 +1,7 @@
 import mongoose from 'mongoose';
 import IProducts from '../interfaces/IProducts';
 
-// Create controller
-// Create Router
-
-const productsSchema = new mongoose.Schema<IProducts>(
+const productSchema = new mongoose.Schema<IProducts>(
   {
     sku: {
       type: String,
@@ -17,6 +14,7 @@ const productsSchema = new mongoose.Schema<IProducts>(
       type: mongoose.Types.ObjectId,
       ref: 'User',
       immutable: [true, `this field can't be modified `],
+      required: [true, 'product must belong to a user'],
     },
     title: {
       type: String,
@@ -48,9 +46,8 @@ const productsSchema = new mongoose.Schema<IProducts>(
       default: null,
     },
     reviewIDs: {
-      type: [mongoose.Types.ObjectId],
+      type: [{ type: mongoose.Types.ObjectId, ref: 'Review' }],
       default: [], // Add default image,
-      // ref: TODO: Implement ref pointing to Reviews,
     },
     availablePieces: {
       type: Number,
@@ -71,5 +68,5 @@ function validateArrLength(val: string[]) {
 
 // TODO: Populate fields
 
-const Product = mongoose.model('Product', productsSchema);
+const Product = mongoose.model('Product', productSchema);
 export default Product;
