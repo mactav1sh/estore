@@ -10,6 +10,7 @@ import globalErrorHandler from './utils/GlobalErrorHandler';
 import userRouter from './routes/userRoute';
 import productsRouter from './routes/productsRoute';
 import reviewsRouter from './routes/reviewsRoute';
+import ordersRouter from './routes/ordersRoute';
 
 // Initialize server
 const app = express();
@@ -42,6 +43,7 @@ app.use(express.json());
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/products', productsRouter);
 app.use('/api/v1/reviews', reviewsRouter);
+app.use('/api/v1/orders', ordersRouter);
 
 // WRONG ROUTE HANDLER
 app.all('*', wrongRouteHandler);

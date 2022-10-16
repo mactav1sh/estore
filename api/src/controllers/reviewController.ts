@@ -4,15 +4,6 @@ import Review from '../models/ReviewModel';
 import Product from '../models/ProductsModel';
 import { IUserInfoRequest } from '../interfaces/IExpress';
 import AppError from '../utils/AppError';
-// 1) create review interface ✅
-// 2) create review model ✅
-// 3) create review controller
-// - get all ✅
-// - get single ✅
-// - create
-// - update ✅
-// - delete ✅
-// 4) create review router ✅
 
 // GET ALL REVIEWS
 export const getReviews = async (

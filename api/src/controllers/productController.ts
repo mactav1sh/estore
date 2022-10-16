@@ -65,7 +65,6 @@ export const createProduct = async (
 ) => {
   try {
     // 1) get user id and change into objectId
-    // const userId = new ObjectId(req.user?.id);
     const userId = new mongoose.Types.ObjectId(req.user?.id);
     console.log('userId', userId);
     // 2) generate random sku number
