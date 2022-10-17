@@ -11,6 +11,7 @@ import userRouter from './routes/userRoute';
 import productsRouter from './routes/productsRoute';
 import reviewsRouter from './routes/reviewsRoute';
 import ordersRouter from './routes/ordersRoute';
+import cartRouter from './routes/cartRoute';
 
 // Initialize server
 const app = express();
@@ -44,6 +45,7 @@ app.use('/api/v1/users', userRouter);
 app.use('/api/v1/products', productsRouter);
 app.use('/api/v1/reviews', reviewsRouter);
 app.use('/api/v1/orders', ordersRouter);
+app.use('/api/v1/cart', cartRouter);
 
 // WRONG ROUTE HANDLER
 app.all('*', wrongRouteHandler);

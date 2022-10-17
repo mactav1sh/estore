@@ -2,6 +2,7 @@ import { Response, NextFunction } from 'express';
 import AppError from '../utils/AppError';
 import User from '../models/UserModel';
 import { IUserInfoRequest } from '../interfaces/IExpress';
+import Cart from '../models/CartModel';
 
 // GET ALL USERS
 export const getUsers = async (
@@ -114,16 +115,19 @@ export const deleteUser = async (
       );
     }
 
-    // 2) find user and delete it
+    // 2) delete the cart associated with the user
+    await Cart.findOneAndRemove({ userID: req.params.id });
+
+    // 3) find user and delete it
     const user = await User.findByIdAndDelete(req.params.id);
 
-    // 3) check if there's a user with this id
+    // 4) check if there's a user with this id
     if (!user)
       return next(
         new AppError(404, `there is no document with id:${req.params.id} `)
       );
 
-    // 4) send confirmation
+    // 5) send confirmation
     res.status(204).json({
       status: 'success',
     });

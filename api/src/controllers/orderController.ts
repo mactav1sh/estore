@@ -67,6 +67,7 @@ export const createOrder = async (
     const userID = new mongoose.Types.ObjectId(req.user?.id);
     // 2) get data from req.body
     const dataObj = {
+      items: req.body.items,
       taxPrice: req.body.taxPrice,
       shippingPrice: req.body.shippingPrice,
       totalPrice: req.body.totalPrice,
