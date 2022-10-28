@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import validator from 'validator';
 import bcrypt from 'bcryptjs';
 import IUser from '../interfaces/IUser';
+import Cart from './CartModel';
 
 const userSchema = new mongoose.Schema<IUser>(
   {
@@ -53,7 +54,18 @@ userSchema.pre('save', async function (next) {
   this.passwordConfirm = undefined;
 });
 
-// 2. COMPARE PASSWORDS
+// 2. ADDING A CART TO EACH USER
+userSchema.pre('save', async function (next) {
+  // 1) check if it's an old user
+  if (!this.isNew) return next();
+  // 2) if new user, add a cart this user
+  await Cart.create({
+    userID: this._id,
+  });
+});
+
+// METHODS
+// 1. COMPARE PASSWORDS
 userSchema.methods.comparePasswords = async function comparePasswords(
   password: string,
   hashedPassword: string

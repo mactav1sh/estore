@@ -171,7 +171,7 @@ export const removeItem = async (
     let updatedCart;
 
     // 4) check if length of items array = 1, if equal one instead of using $pull to remove last element, just set the items array = [] (temp solution)
-    if (cart?.items.length === 1) {
+    if (cart?.itemsList.length === 1) {
       updatedCart = await cart.updateOne(
         { price: 2500, $unset: { items: [] } },
         { runValidators: true }

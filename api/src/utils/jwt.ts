@@ -18,9 +18,6 @@ export function createAndSendToken(
 
   res.status(statusCode).json({
     status: 'success',
-    data: {
-      user,
-      token,
-    },
+    user,
   });
 }

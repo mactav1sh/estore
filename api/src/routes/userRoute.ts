@@ -8,6 +8,9 @@ const router = express.Router();
 // GET ALL USERS
 router.get('/', userController.getUsers);
 
+// GET SINGLE USER BY TOKEN
+router.get('/profile', protectRoute, userController.getUserByToken);
+
 // GET SINGLE USER
 router.get('/:id', userController.getUser);
 

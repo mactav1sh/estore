@@ -18,7 +18,10 @@ const app = express();
 
 // Middlewars
 // - security
-app.use(cors());
+const corsOptions = {
+  exposedHeaders: 'Authorization',
+};
+app.use(cors(corsOptions));
 app.use(helmet());
 app.use(mongoSanitize());
 

@@ -22,11 +22,7 @@ export const signUp = async (
       role: process.env.NODE_ENV === 'development' ? req.body.role : 'user',
     });
 
-    // 2) Add a cart to user
-    await Cart.create({
-      userID: newUser._id,
-    });
-    // 3) create and send token
+    // 2) create and send token
     createAndSendToken(newUser, res, 201);
   } catch (error) {
     next(error);

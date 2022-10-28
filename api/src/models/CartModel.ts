@@ -11,17 +11,15 @@ const cartSchema = new mongoose.Schema<ICart>(
       unique: true,
     },
 
-    items: [
+    itemsList: [
       {
         type: mongoose.Types.ObjectId,
         ref: 'Product',
-        default: [],
       },
     ],
 
     totalPrice: {
       type: Number,
-      required: true,
       default: 0,
     },
   },
