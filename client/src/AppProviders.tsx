@@ -1,6 +1,8 @@
 import { ReactNode } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { QueryClientProvider } from 'react-query';
 import AuthProvider from './context/authContext';
+import { queryClient } from './lib/react-query';
 
 interface IProps {
   children?: ReactNode;
@@ -8,9 +10,11 @@ interface IProps {
 
 const AppProviders = ({ children }: IProps) => {
   return (
-    <Router>
-      <AuthProvider>{children}</AuthProvider>
-    </Router>
+    <QueryClientProvider client={queryClient}>
+      <Router>
+        <AuthProvider>{children}</AuthProvider>
+      </Router>
+    </QueryClientProvider>
   );
 };
 
