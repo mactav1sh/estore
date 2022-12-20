@@ -17,9 +17,7 @@ export const getOrders = async (
     res.status(200).json({
       status: 'success',
       length: orders.length,
-      data: {
-        orders,
-      },
+      orders,
     });
   } catch (error) {
     next(error);
@@ -47,9 +45,7 @@ export const getUserOrders = async (
     res.status(200).json({
       status: 'success',
       length: orders.length,
-      data: {
-        orders,
-      },
+      orders,
     });
   } catch (error) {
     next(error);
@@ -84,7 +80,7 @@ export const createOrder = async (
     // 4) send data
     res.status(201).json({
       status: 'success',
-      data: { order },
+      order,
     });
   } catch (error) {
     next(error);

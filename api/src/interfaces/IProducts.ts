@@ -12,7 +12,9 @@ export interface IProducts {
   salePrice: number;
   reviewIDs: mongoose.Types.ObjectId[];
   availablePieces: number;
-  images: string[];
+  imageUrl: string;
+  averageRating: number;
+  numberOfRatings: number;
 }
 
 export default IProducts;

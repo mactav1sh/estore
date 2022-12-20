@@ -17,9 +17,7 @@ export const getUsers = async (
     res.status(200).json({
       status: 'success',
       length: users.length,
-      data: {
-        users,
-      },
+      users,
     });
   } catch (error) {
     next(error);
@@ -43,9 +41,7 @@ export const getUser = async (
     // 3) send user
     res.status(200).json({
       status: 'success',
-      data: {
-        user,
-      },
+      user,
     });
   } catch (error) {
     next(error);
@@ -113,9 +109,7 @@ export const updateUser = async (
     // 5) send updated user
     res.status(200).json({
       status: 'success',
-      data: {
-        user: updatedUser,
-      },
+      user: updatedUser,
     });
   } catch (error) {
     next(error);

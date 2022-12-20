@@ -20,9 +20,7 @@ export const getProducts = async (
     res.status(200).json({
       status: 'success',
       length: products.length,
-      data: {
-        products,
-      },
+      products,
     });
   } catch (error) {
     next(error);
@@ -48,9 +46,7 @@ export const getProduct = async (
     // 3) send data
     res.status(200).json({
       status: 'success',
-      data: {
-        product,
-      },
+      product,
     });
   } catch (error) {
     next(error);
@@ -78,7 +74,7 @@ export const createProduct = async (
       onSale: req.body.onSale,
       salePrice: req.body.salePrice,
       availablePieces: req.body.availablePieces,
-      images: req.body.images,
+      imageUrl: req.body.imageUrl,
     };
     // 3) create product
     const newProduct = await Product.create({
@@ -90,7 +86,7 @@ export const createProduct = async (
     // 4) send data
     res.status(201).json({
       status: 'success',
-      data: { product: newProduct },
+      product: newProduct,
     });
   } catch (error) {
     next(error);
@@ -145,9 +141,7 @@ export const updateProduct = async (
     // 5) send data
     res.status(200).json({
       status: 'success',
-      data: {
-        product: updatedProduct,
-      },
+      product: updatedProduct,
     });
   } catch (error) {
     next(error);

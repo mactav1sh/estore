@@ -18,9 +18,7 @@ export const getReviews = async (
     res.status(200).json({
       status: 'success',
       length: reviews.length,
-      data: {
-        reviews,
-      },
+      reviews,
     });
   } catch (error) {
     next(error);
@@ -46,9 +44,7 @@ export const getReview = async (
     // 3) send data
     res.status(200).json({
       status: 'success',
-      data: {
-        review,
-      },
+      review,
     });
   } catch (error) {
     next(error);
@@ -96,7 +92,7 @@ export const createReview = async (
     // 6) send data
     res.status(201).json({
       status: 'success',
-      data: { review },
+      review,
     });
   } catch (error) {
     next(error);
@@ -145,9 +141,7 @@ export const updateReview = async (
     // 5) send data
     res.status(200).json({
       status: 'success',
-      data: {
-        review: updatedReview,
-      },
+      review: updatedReview,
     });
   } catch (error) {
     next(error);

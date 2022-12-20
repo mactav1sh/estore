@@ -53,9 +53,21 @@ const productSchema = new mongoose.Schema<IProducts>(
       type: Number,
       default: 1,
     },
-    images: {
-      type: [String],
-      validate: [validateArrLength, 'max number of images is 5'],
+    imageUrl: String,
+    // images: {
+    //   type: [String],
+    //   validate: [validateArrLength, 'max number of images is 5'],
+    // },
+    averageRating: {
+      type: Number,
+      default: 1,
+      min: [1, 'Rating must be above 1.0'],
+      max: [5, 'Rating must be below 5.0'],
+      set: (val: number) => Math.round(val * 10) / 10,
+    },
+    numberOfRatings: {
+      type: Number,
+      default: 0,
     },
   },
   { timestamps: true }

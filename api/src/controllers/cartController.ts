@@ -17,9 +17,7 @@ export const getCarts = async (
     res.status(200).json({
       status: 'success',
       length: carts.length,
-      data: {
-        carts,
-      },
+      carts,
     });
   } catch (error) {
     next(error);
@@ -41,17 +39,14 @@ export const getUserCart = async (
     }
 
     // 2) get the cart that belongs to a user
-    const cart = await Cart.find({ userID: req.params.userID });
-    // .populate(
-    //   'items'
-    // );
+    const cart = await Cart.find({ userID: req.params.userID }).populate(
+      'itemsList'
+    );
 
     // 3) send data
     res.status(200).json({
       status: 'success',
-      data: {
-        cart,
-      },
+      cart: cart[0],
     });
   } catch (error) {
     next(error);
@@ -110,13 +105,15 @@ export const addItem = async (
         new AppError(403, 'you are not allowed to  perform this action')
       );
     }
+    console.log('req.params.userID', req.params.userID);
+    console.log('productID', productID);
 
     // 3) find and update cart (if it exists)
     const updatedCart = await Cart.findOneAndUpdate(
       { userID: req.params.userID },
       {
         $addToSet: {
-          items: req.params.productID,
+          itemsList: req.params.productID,
         },
       },
       {
@@ -137,9 +134,7 @@ export const addItem = async (
     // 5) send data
     res.status(200).json({
       status: 'success',
-      data: {
-        cart: updatedCart,
-      },
+      cart: updatedCart,
     });
   } catch (error) {
     next(error);
@@ -202,9 +197,7 @@ export const removeItem = async (
     // 5) send data
     res.status(200).json({
       status: 'success',
-      data: {
-        cart: updatedCart,
-      },
+      cart: updatedCart,
     });
   } catch (error) {
     next(error);
