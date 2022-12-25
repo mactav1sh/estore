@@ -1,10 +1,18 @@
 import { FaTimes } from 'react-icons/fa';
+import useAuth from '../../../hooks/useAuth';
 import { Product } from '../../products';
+import { useDeleteCartItem } from '../api/deleteCartItem';
 interface Props {
   item: Product;
 }
 
 const CartListItem = ({ item }: Props) => {
+  const { user } = useAuth();
+
+  const deleteItemMutation = useDeleteCartItem(user?._id as string);
+
+  if (deleteItemMutation.isLoading) return <p>loading...</p>;
+
   return (
     <li className="flex w-full items-center justify-around border-b pb-3 font-medium last:border-none">
       <div className="mr-3 flex flex-[2] items-center space-x-2">
@@ -18,6 +26,12 @@ const CartListItem = ({ item }: Props) => {
       <button
         className="mr-2 rounded-full bg-slate-200 p-1 duration-200 hover:text-red-600"
         type="button"
+        onClick={() =>
+          deleteItemMutation.mutate({
+            userId: user?._id as string,
+            productId: item._id,
+          })
+        }
       >
         <FaTimes className="h-3 w-3 md:h-3.5 md:w-3.5" />
       </button>

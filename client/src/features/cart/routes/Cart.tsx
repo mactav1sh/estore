@@ -1,31 +1,18 @@
-import { useEffect, useState } from 'react';
-import { Link, useNavigate, useParams, Navigate } from 'react-router-dom';
-import { cartData } from '../../../data/cart';
+import { Link } from 'react-router-dom';
 import CartList from '../components/CartList';
 import useAuth from '../../../hooks/useAuth';
-import useGetCart from '../api/useGetCart';
+import { useGetCart } from '../api/getCart';
 import Spinner from '../../../components/elements/Spinner';
-import { Cart as CartType } from '../types/index';
+import { calcProductCost } from '../../../utils/calcCost';
 
-interface Props {}
-
-const Cart = ({}: Props) => {
-  // const [cartData, setCartData] = useState<CartType>({} as CartType);
-
+const Cart = () => {
+  const { user } = useAuth();
   const additionalCost = {
     taxes: 20,
     shipping: 35,
   };
 
-  const { user } = useAuth();
   const { data, isLoading } = useGetCart(user?._id as string);
-
-  const cost =
-    (cartData.itemsList &&
-      cartData.itemsList?.reduce((cur, item) => {
-        return cur + Number(item.onSale ? item.salePrice : item.price);
-      }, 0)) ||
-    0;
 
   if (isLoading) return <Spinner />;
 
@@ -37,10 +24,10 @@ const Cart = ({}: Props) => {
         <div className="flex-[2]">
           {/* -- title */}
           <h2 className="mb-10 text-xl font-semibold uppercase">
-            my cart ({cartData.itemsList.length})
+            my cart ({data.cart.itemsList.length})
           </h2>
           {/* -- products list */}
-          <CartList items={cartData.itemsList} />
+          <CartList items={data.cart.itemsList} />
         </div>
         {/* - prices - right side */}
         <div className="h-fit flex-[1] rounded-md border border-gray-200 py-4 md:self-center">
@@ -54,7 +41,7 @@ const Cart = ({}: Props) => {
             <div className="mb-2 flex items-center justify-between">
               <span className="text-sm text-gray-500">Subtotal.</span>
               {/* <span>{cartData.itemsList.reduce((cur, item) => item)}$</span> */}
-              <span>{cost}$</span>
+              <span>{calcProductCost(data.cart.itemsList)}$</span>
             </div>
             {/* --- shipping */}
             <div className="mb-2 flex items-center justify-between">
@@ -72,7 +59,10 @@ const Cart = ({}: Props) => {
             <div className="mb-4 flex items-center justify-between">
               <span className="">Total Price.</span>
               <span className="font-semibold">
-                {cost + additionalCost.shipping + additionalCost.taxes}$
+                {calcProductCost(data.cart.itemsList) +
+                  additionalCost.shipping +
+                  additionalCost.taxes}
+                $
               </span>
             </div>
             {/* --- checkout link */}
