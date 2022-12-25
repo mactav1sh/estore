@@ -159,7 +159,7 @@ export const removeItem = async (
     }
 
     // TODO: FIX THIS BUG, CAN'T DELETE LAST ELEMENT OF THE ARRAY IF I USED $pull
-    // THIS SOLUTION IS TEMPORARY
+    // THIS SOLUTION IS TEMPORARY.
 
     // 3) get cart
     const cart = await Cart.findOne({ userID: req.params.userID });
