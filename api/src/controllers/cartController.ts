@@ -164,19 +164,17 @@ export const removeItem = async (
     // 3) get cart
     const cart = await Cart.findOne({ userID: req.params.userID });
     let updatedCart;
-
     // 4) check if length of items array = 1, if equal one instead of using $pull to remove last element, just set the items array = [] (temp solution)
     if (cart?.itemsList.length === 1) {
       updatedCart = await cart.updateOne(
-        { price: 2500, $unset: { items: [] } },
+        { price: 2500, $unset: { itemsList: [] } },
         { runValidators: true }
       );
     } else {
-      // else romove the id from the array
-      updatedCart = cart?.updateOne(
+      // else remove the id from the array
+      updatedCart = await cart?.updateOne(
         {
-          totalPrice: 10,
-          $pullAll: { items: [productID] },
+          $pullAll: { itemsList: [productID] },
         },
         {
           new: true,
