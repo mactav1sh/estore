@@ -1,5 +1,5 @@
 import { ReactNode, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 interface IProps {
   children?: ReactNode;
@@ -10,10 +10,12 @@ interface IProps {
 const Layout = ({ title, children, additionalContent }: IProps) => {
   const { user } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+  const pathName = location.state?.prevPath || '/';
 
   useEffect(() => {
-    user && navigate('/');
-  }, [navigate, user]);
+    user && navigate(pathName);
+  }, [navigate, pathName, user]);
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center space-y-4  bg-slate-300 px-2">
