@@ -78,7 +78,5 @@ function validateArrLength(val: string[]) {
   return val.length <= 5;
 }
 
-// TODO: Populate fields
-
 const Product = mongoose.model('Product', productSchema);
 export default Product;

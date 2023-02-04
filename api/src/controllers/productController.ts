@@ -3,9 +3,8 @@ import Product from '../models/ProductsModel';
 import AppError from '../utils/AppError';
 import { IUserInfoRequest } from '../interfaces/IExpress';
 import mongoose from 'mongoose';
-import { ObjectId } from 'mongodb';
-import User from '../models/UserModel';
 import { generateSKU } from '../utils/generateSKU';
+import QueryMethods from '../utils/QueryMethods';
 
 // GET ALL PRODUCTS
 export const getProducts = async (
@@ -14,8 +13,14 @@ export const getProducts = async (
   next: NextFunction
 ) => {
   try {
-    // 1) get all products
-    const products = await Product.find();
+    // 1) get query with additional features
+    const query = new QueryMethods(Product.find(), req.query)
+      .filter()
+      .sort()
+      .limitFields()
+      .paginate();
+
+    const products = await query.query;
     // 2) send data
     res.status(200).json({
       status: 'success',

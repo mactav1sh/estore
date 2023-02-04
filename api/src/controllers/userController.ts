@@ -48,26 +48,26 @@ export const getUser = async (
   }
 };
 
-export const // GET USER PROFILE BY TOKEN
-  getUserByToken = async (
-    req: IUserInfoRequest,
-    res: Response,
-    next: NextFunction
-  ) => {
-    try {
-      // 1) get user
-      const user = await User.findById(req.user?.id);
-      // 2) check if there's a user
-      if (!user) return next(new AppError(404, `user not found} `));
-      // 3) send user
-      res.status(200).json({
-        status: 'success',
-        user,
-      });
-    } catch (error) {
-      next(error);
-    }
-  };
+// GET USER PROFILE BY TOKEN
+export const getUserByToken = async (
+  req: IUserInfoRequest,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    // 1) get user
+    const user = await User.findById(req.user?.id);
+    // 2) check if there's a user
+    if (!user) return next(new AppError(404, `user not found} `));
+    // 3) send user
+    res.status(200).json({
+      status: 'success',
+      user,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 
 // UPDATE USER INFO ONLY - WITHOUT PASSWORD
 export const updateUser = async (
