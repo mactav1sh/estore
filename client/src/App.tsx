@@ -7,17 +7,19 @@ import Products from './features/products/routes/Products';
 import Cart from './features/cart/routes/Cart';
 import Home from './features/misc/routes/Home';
 import ProtectedRoute from './lib/Authorization';
+import Header from './components/layout/Header/Header';
 
 function App() {
   return (
     <AppProviders>
+      <Header />
       <Routes>
         {/* AUTH */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         {/* PRODUCTS */}
         <Route path="/products" element={<Products />} />
-        <Route path="/products/:id" element={<Product />} />
+        <Route path="/products/:productId" element={<Product />} />
         {/* HOME */}
         <Route path="/" element={<Home />} />
         {/* CART */}

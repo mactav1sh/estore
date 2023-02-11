@@ -1,12 +1,19 @@
-import { useState } from 'react';
+interface Props {
+  onClick?: () => void;
+  classes?: string;
+  active?: boolean;
+}
 
-const HBToggle = () => {
-  const [active, setActive] = useState(false);
-
+const HBToggle = ({ onClick, classes, active = false }: Props) => {
+  const handleClick = () => {
+    onClick?.();
+  };
   return (
     <div
-      className={`hb-btn ${active ? 'hb-active' : 'hb-not-active'}`}
-      onClick={() => setActive((prev) => !prev)}
+      onClick={handleClick}
+      className={`hb-btn ${active ? 'hb-active' : 'hb-not-active'}${
+        ' ' + classes
+      }`}
     >
       <span></span>
       <span></span>

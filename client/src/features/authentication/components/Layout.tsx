@@ -18,13 +18,13 @@ const Layout = ({ title, children, additionalContent }: IProps) => {
   }, [navigate, pathName, user]);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center space-y-4  bg-slate-300 px-2">
+    <main className="flex min-h-screen flex-col items-center justify-center space-y-4  bg-slate-50 px-2">
       {/* TITLE */}
 
       <h1 className="text-2xl font-bold uppercase">{title}</h1>
 
       {/* CONTENT + FORM */}
-      <div className="w-full max-w-sm  bg-white px-4 py-6 shadow-md">
+      <div className="w-full max-w-sm  rounded-sm bg-white px-4 py-6 shadow-md">
         {/* - FORM */}
         {children}
 
@@ -37,7 +37,7 @@ const Layout = ({ title, children, additionalContent }: IProps) => {
               {additionalContent.text}{' '}
               <Link
                 to={`/${additionalContent.linkTo}`}
-                className="font-semibold duration-300 hover:text-pink-600"
+                className="font-semibold duration-300 hover:text-brand-pink-700"
               >
                 {additionalContent.boldtext}
               </Link>

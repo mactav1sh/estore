@@ -108,7 +108,6 @@ function useProvideAuth() {
       }
     } catch (error) {
       const axiosError = error as AxiosError;
-      console.log(axiosError);
       dispatch({
         type: 'SET_ERROR',
         payload: axiosError.response?.data as Error,

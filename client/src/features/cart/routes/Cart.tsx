@@ -8,18 +8,18 @@ import { calcProductCost } from '../../../utils/calcCost';
 const Cart = () => {
   const { user } = useAuth();
   const additionalCost = {
-    taxes: 20,
-    shipping: 35,
+    taxes: 0.2,
+    shipping: 0.3,
   };
 
   const { data, isLoading } = useGetCart(user?._id as string);
 
   if (isLoading) return <Spinner />;
-
+  const productsCost = calcProductCost(data.cart.itemsList);
   return (
-    <main className="flex min-h-screen items-center justify-center bg-slate-200 px-2">
+    <main className="flex min-h-screen items-center justify-center bg-slate-50 px-2">
       {/* MAIN CONTENT */}
-      <div className="flex w-full max-w-4xl flex-col space-y-7 rounded-md bg-white p-6 md:flex-row md:justify-between md:space-y-0 md:space-x-16">
+      <div className="flex w-full max-w-4xl flex-col space-y-7 rounded-md border bg-white p-6 shadow-md md:flex-row md:justify-between md:space-y-0 md:space-x-16">
         {/* - cart items - left side */}
         <div className="flex-[2]">
           {/* -- title */}
@@ -46,12 +46,12 @@ const Cart = () => {
             {/* --- shipping */}
             <div className="mb-2 flex items-center justify-between">
               <span className="text-sm text-gray-500">Shipping Est.</span>
-              <span>{additionalCost.shipping}$</span>
+              <span>{additionalCost.shipping}%</span>
             </div>
             {/* --- taxes */}
             <div className="flex items-center justify-between">
               <span className="text-sm text-gray-500">Taxes.</span>
-              <span>{additionalCost.taxes}$</span>
+              <span>{additionalCost.taxes}%</span>
             </div>
             {/* --- divider */}
             <div className="my-4 mx-auto h-[0.1rem] w-1/3 bg-gray-200"></div>
@@ -59,16 +59,18 @@ const Cart = () => {
             <div className="mb-4 flex items-center justify-between">
               <span className="">Total Price.</span>
               <span className="font-semibold">
-                {calcProductCost(data.cart.itemsList) +
-                  additionalCost.shipping +
-                  additionalCost.taxes}
-                $
+                {productsCost
+                  ? productsCost +
+                    productsCost * additionalCost.shipping +
+                    productsCost * additionalCost.taxes
+                  : 0}
+                {}$
               </span>
             </div>
             {/* --- checkout link */}
             <Link
               to="/"
-              className="flex items-center justify-between bg-pink-600 py-2 duration-200 hover:bg-pink-700"
+              className="flex items-center justify-between bg-brand-pink-500 py-2 duration-200 hover:bg-brand-pink-700"
             >
               <p className="w-full text-center text-sm capitalize text-white">
                 proceed to checkout
