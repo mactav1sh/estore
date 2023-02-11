@@ -35,7 +35,7 @@ export function SearchBar({ styles }: { styles?: string }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className={`flex w-full max-w-xs shadow-sm md:max-w-sm lg:max-w-xl ${styles}`.trim()}
+      className={`flex w-full max-w-xs shadow-md md:max-w-sm lg:max-w-xl ${styles}`.trim()}
     >
       <input
         type="text"
@@ -43,11 +43,11 @@ export function SearchBar({ styles }: { styles?: string }) {
         onChange={(e) => setText(e.target.value)}
         name="search"
         placeholder="Search Products and Categories"
-        className="w-full rounded-l-md px-2 py-1.5 placeholder:text-center focus:outline-none"
+        className="w-full rounded-l-md px-1 py-1 placeholder:text-center placeholder:text-sm focus:outline-none md:px-2 md:py-1.5 md:placeholder:text-base"
       />
       <button
         type="submit"
-        className="rounded-r-md bg-slate-200 px-4 text-slate-500 duration-200  hover:bg-slate-300 active:bg-slate-400"
+        className="rounded-r-md bg-slate-200 px-4 text-sm text-slate-500 duration-200 hover:bg-slate-300 active:bg-slate-400 md:text-base"
       >
         Search
       </button>
