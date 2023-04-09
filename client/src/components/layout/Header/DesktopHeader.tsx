@@ -33,7 +33,7 @@ const DesktopHeader = () => {
           <div className="flex items-center justify-between">
             <Link
               to="/"
-              className="font-logo text-2xl font-semibold uppercase text-brand-pink-50"
+              className="font-logo text-2xl font-semibold uppercase text-white"
             >
               estore
             </Link>
