@@ -4,7 +4,7 @@ import { Product } from '../types';
 import ProductCard from './ProductCard';
 
 interface Props {
-  products?: Product[];
+  products: Product[];
   title?: string;
   secondaryText?: string;
 }
@@ -19,17 +19,15 @@ const ProductsSection = ({ products, title, secondaryText = '' }: Props) => {
           </h3>
           <Link
             to="products"
-            className="h-fit text-sm font-semibold capitalize text-gray-500 md:text-lg"
+            className="h-fit text-sm font-semibold capitalize text-gray-500 md:text-base"
           >
             {secondaryText}
           </Link>
         </div>
         <div className="grid-cols-1: grid justify-items-center gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {Array(4)
-            .fill(null)
-            .map((_item, i) => (
-              <ProductCard key={i} />
-            ))}
+          {products.slice(0, 4).map((product) => (
+            <ProductCard product={product} key={product._id} />
+          ))}
         </div>
       </ContentWrapper>
     </section>
