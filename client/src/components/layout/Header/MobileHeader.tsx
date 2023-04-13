@@ -35,9 +35,11 @@ function MobileHeader() {
           className={`flex h-0 flex-col items-center justify-center overflow-hidden duration-700 ease-in-out ${
             openMenu ? 'h-60' : 'h-0'
           }`}
-          onClick={() => setOpenMenu((p) => !p)}
         >
-          <div className="mb-7 flex flex-col justify-center space-y-1 text-center">
+          <div
+            className="mb-7 flex flex-col justify-center space-y-1 text-center"
+            onClick={() => setOpenMenu((p) => !p)}
+          >
             {!user && (
               <>
                 <Link
