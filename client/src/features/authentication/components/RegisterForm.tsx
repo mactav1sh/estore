@@ -25,9 +25,7 @@ const RegisterForm = () => {
     event.preventDefault();
     const { name, email, password, passwordConfirm } = formValues;
     // MAKE THE HTTP REQUEST
-    const user = await signUp(name, email, password, passwordConfirm);
-
-    console.log(user);
+    await signUp(name, email, password, passwordConfirm);
   };
 
   return (

@@ -17,5 +17,5 @@ export interface IState {
 export type ACTIONTYPE =
   | { type: 'SET_LOADING' }
   | { type: 'SET_USER'; payload: IUser }
-  | { type: 'SET_ERROR'; payload: Error }
+  | { type: 'SET_ERROR'; payload: Error | null }
   | { type: 'RESET' };

@@ -1,5 +1,5 @@
 import { AxiosError } from 'axios';
-import { useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
 import { axios } from '../../../lib/axios';
 import storage from '../../../utils/storage';
 import { IUser, IState, ACTIONTYPE } from '../types';
@@ -39,6 +39,13 @@ function useProvideAuth() {
     error: null,
     status: 'idle',
   });
+  useEffect(() => {
+    if (state.error) {
+      setTimeout(() => {
+        dispatch({ type: 'SET_ERROR', payload: null });
+      }, 5000);
+    }
+  }, [state.error]);
 
   // SIGN IN
   async function signIn(
