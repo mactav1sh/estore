@@ -58,7 +58,7 @@ const DesktopHeader = () => {
                         <>
                           <Link
                             to="login"
-                            className="mx-2 w-full rounded-sm bg-brand-pink-400 py-1 text-center text-sm font-semibold text-white shadow-md duration-200 hover:bg-brand-pink-600"
+                            className="mx-2 w-full rounded-sm bg-brand-pink-600 py-1 text-center text-sm font-semibold text-white shadow-md duration-200 hover:bg-brand-pink-500"
                             onClick={() => setOpenAccount(false)}
                           >
                             Login

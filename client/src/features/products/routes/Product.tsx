@@ -49,7 +49,7 @@ const Product = () => {
           {/* CONTENT */}
           <div className="flex max-w-lg flex-col items-center  md:max-w-none lg:w-[28rem]">
             {/* - TITLE AND DESC */}
-            <div className="mb-9 w-96 md:mb-12 md:w-full md:text-left">
+            <div className="mb-9 w-72 md:mb-12 md:w-full md:text-left">
               <div className="flex items-center space-x-3">
                 {/* -- TITLE */}
                 <p className="mb-2 text-2xl font-bold capitalize md:text-3xl">
