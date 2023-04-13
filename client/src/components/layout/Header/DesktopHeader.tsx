@@ -65,7 +65,7 @@ const DesktopHeader = () => {
                           </Link>
                           <Divider />
                           <Link
-                            to="login"
+                            to="register"
                             className="mx-2 w-full rounded-sm bg-slate-200 py-1 text-center text-sm  duration-200 hover:bg-slate-300"
                             onClick={() => setOpenAccount(false)}
                           >
