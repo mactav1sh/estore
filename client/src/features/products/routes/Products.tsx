@@ -8,20 +8,24 @@ import { createQueryStr } from '../../../utils/createQueryStr';
 const Products = () => {
   const [params] = useSearchParams();
   const queryStr = createQueryStr(params);
-  const category = params.get('category') || undefined;
 
-  const { isLoading, data } = useGetProducts(queryStr, category);
+  const { isLoading, data } = useGetProducts(queryStr, queryStr);
 
   if (isLoading) return <LoadingPage />;
-  console.log(data.products);
   return (
-    <main className="flex min-h-screen items-center justify-center  bg-slate-50 px-2 pb-16 pt-32">
+    <main className="flex min-h-screen items-center justify-center bg-slate-50 px-2 pb-16 pt-32">
       {/* MAIN CONTENT */}
-      <div className="grid w-full grid-cols-1 justify-items-center gap-y-8 rounded-md p-2.5 md:w-auto md:grid-cols-2 md:gap-7 lg:grid-cols-4">
-        {data.products.map((product: Product) => (
-          <ProductCard product={product} key={product._id} />
-        ))}
-      </div>
+      {data.products && data.products.length > 0 ? (
+        <div className="grid w-full grid-cols-1 justify-items-center gap-y-8 rounded-md p-2.5 md:w-auto md:grid-cols-2 md:gap-7 lg:grid-cols-4">
+          {data.products.map((product: Product) => (
+            <ProductCard product={product} key={product._id} />
+          ))}
+        </div>
+      ) : (
+        <p className="text-center text-2xl font-semibold capitalize text-gray-500">
+          No products found
+        </p>
+      )}
     </main>
   );
 };

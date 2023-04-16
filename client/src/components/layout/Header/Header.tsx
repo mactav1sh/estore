@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { BsCart2 } from 'react-icons/bs';
 import MobileHeader from './MobileHeader';
 import DesktopHeader from './DesktopHeader';
@@ -25,11 +25,20 @@ const Header = () => {
 
 export default Header;
 
-export function SearchBar({ styles }: { styles?: string }) {
+export function SearchBar({
+  styles,
+  onBtnClick,
+}: {
+  styles?: string;
+  onBtnClick?: () => void;
+}) {
+  const navigate = useNavigate();
   const [text, setText] = useState('');
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    onBtnClick?.();
     setText('');
+    navigate(`/products?find=${text}`);
   };
 
   return (

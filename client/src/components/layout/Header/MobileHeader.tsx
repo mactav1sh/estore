@@ -79,7 +79,7 @@ function MobileHeader() {
           </div>
           {/* - cart */}
           <Divider />
-          <SearchBar styles="mt-5" />
+          <SearchBar onBtnClick={() => setOpenMenu((p) => !p)} styles="mt-5" />
         </div>
       </div>
     </header>
