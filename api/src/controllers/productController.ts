@@ -13,8 +13,20 @@ export const getProducts = async (
   next: NextFunction
 ) => {
   try {
+    let queryObj = Product.find();
+
+    // Search by name or products functionality
+    if (req.query.find) {
+      queryObj = Product.find({
+        $or: [
+          { title: { $regex: req.query.find, $options: 'i' } },
+          { category: { $regex: req.query.find, $options: 'i' } },
+        ],
+      });
+    }
+
     // 1) get query with additional features
-    const query = new QueryMethods(Product.find(), req.query)
+    const query = new QueryMethods(queryObj, req.query)
       .filter()
       .sort()
       .limitFields()
@@ -67,7 +79,6 @@ export const createProduct = async (
   try {
     // 1) get user id and change into objectId
     const userId = new mongoose.Types.ObjectId(req.user?.id);
-    console.log('userId', userId);
     // 2) generate random sku number
     const sku = generateSKU(8);
     // 3) get data from req.body

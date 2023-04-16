@@ -5,7 +5,6 @@ import app from './app';
 dotenv.config();
 
 const db = process.env.DATABASE_LOCAL_URL as string;
-console.log(db);
 
 mongoose.connect(db).then(() => {
   console.log('database connected');

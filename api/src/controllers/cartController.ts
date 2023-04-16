@@ -105,8 +105,6 @@ export const addItem = async (
         new AppError(403, 'you are not allowed to  perform this action')
       );
     }
-    console.log('req.params.userID', req.params.userID);
-    console.log('productID', productID);
 
     // 3) find and update cart (if it exists)
     const updatedCart = await Cart.findOneAndUpdate(
