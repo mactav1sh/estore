@@ -23,10 +23,13 @@ const DesktopHeader = () => {
   };
 
   return (
-    <header className="dark:bg-darkBlue-900 fixed top-0 z-10 w-full">
-      <AnnouncementBar>
-        <p className="text-sm">We are celebrating our one year anniversary!</p>
-        <MdCelebration className="h-5 w-5 text-yellow-300" />
+    <header className="fixed top-0 z-10 w-full">
+      <AnnouncementBar styles={{ backgroundColor: '#ffe8cc' }}>
+        <p className="text-xs font-bold capitalize tracking-wide">
+          We are excited to announce that our partnership with
+          <span className="text-orange-600"> z-tech</span> is finally official !
+        </p>
+        <MdCelebration className="h-5 w-5 text-orange-600" />
       </AnnouncementBar>
       <div className="bg-brand-pink-600 py-3 shadow-md">
         <ContentWrapper>

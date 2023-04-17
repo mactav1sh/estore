@@ -8,6 +8,7 @@ import Cart from './features/cart/routes/Cart';
 import Home from './features/misc/routes/Home';
 import ProtectedRoute from './lib/Authorization';
 import Header from './components/layout/Header/Header';
+import Footer from './components/layout/Footer/Footer';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         {/* NOT FOUND */}
         <Route path="*" element={<h1 className="font-bold">NOT FOUND</h1>} />
       </Routes>
+      <Footer />
     </AppProviders>
   );
 }

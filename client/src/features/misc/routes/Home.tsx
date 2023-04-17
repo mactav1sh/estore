@@ -23,7 +23,7 @@ const Home = () => {
   }, []);
 
   return (
-    <main className="h-screen">
+    <main>
       {/* Hero - section */}
       <Hero />
       {/* Carousel - Section */}
