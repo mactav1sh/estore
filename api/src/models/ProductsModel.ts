@@ -22,6 +22,7 @@ const productSchema = new mongoose.Schema<IProducts>(
     },
     category: {
       type: String,
+      lowercase: true,
       // enum: {
       //   values: ['phone', ...],
       //   message: 'category is either: ...'
