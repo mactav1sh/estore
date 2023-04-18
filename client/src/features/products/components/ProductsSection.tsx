@@ -11,10 +11,10 @@ interface Props {
 
 const ProductsSection = ({ products, title, secondaryText = '' }: Props) => {
   return (
-    <section className="mb-44 md:mb-56 lg:mb-64">
+    <section className="mb-20 md:mb-24 lg:mb-28">
       <ContentWrapper>
         <div className="item mb-10 flex items-center justify-between md:mb-16">
-          <h3 className=" text-2xl font-bold capitalize lg:text-4xl">
+          <h3 className="text-xl font-bold capitalize md:text-2xl lg:text-4xl">
             {title}
           </h3>
           <Link
@@ -24,7 +24,7 @@ const ProductsSection = ({ products, title, secondaryText = '' }: Props) => {
             {secondaryText}
           </Link>
         </div>
-        <div className="grid-cols-1: lg:-gap-0 grid justify-items-center gap-6 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid grid-cols-1 justify-items-center gap-6 gap-x-0 md:grid-cols-2 md:gap-y-16 xl:grid-cols-4">
           {products.slice(0, 4).map((product) => (
             <ProductCard product={product} key={product._id} />
           ))}
