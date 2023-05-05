@@ -11,19 +11,16 @@ const orderSchema = new mongoose.Schema<IOrder>(
     status: {
       type: String,
       enum: {
-        values: ['shipped', 'delivered'],
-        message: 'status is either: "shipped" or "delivered"',
+        values: ['confirmed', 'shipped', 'delivered'],
+        message: 'status is either: "confirmed", "shipped", or "delivered"',
       },
       required: [true, 'order must have a status'],
     },
 
     items: [
       {
-        quantity: Number,
-        product: {
-          type: mongoose.Types.ObjectId,
-          ref: 'Product',
-        },
+        type: mongoose.Types.ObjectId,
+        ref: 'Product',
       },
     ],
 
@@ -58,6 +55,11 @@ const orderSchema = new mongoose.Schema<IOrder>(
 
     paymentMethod: {
       type: String,
+      enum: {
+        values: ['cashOnDelivery', 'debitCard', 'bankTransfer'],
+        message:
+          'paymentMethod is either: "cashOnDelivery", "debitCard", or "bankTransfer"',
+      },
       required: true,
     },
   },

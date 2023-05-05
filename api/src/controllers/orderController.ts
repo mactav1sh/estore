@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import { IUserInfoRequest } from '../interfaces/IExpress';
 import Order from '../models/OrderModel';
 import AppError from '../utils/AppError';
+import Cart from '../models/CartModel';
 
 // GET ALL ORDERS
 export const getOrders = async (
@@ -72,10 +73,34 @@ export const createOrder = async (
       paymentMethod: req.body.paymentMethod,
     };
     // 3) create order
-    const order = await Order.create({
-      userID,
-      ...dataObj,
-    });
+    const order = await Order.create(
+      {
+        userID,
+        ...dataObj,
+      },
+      async function (err, _result) {
+        if (err)
+          return next(
+            new AppError(
+              403,
+              'Some error happened while trying to confirm the order, please try again later'
+            )
+          );
+
+        await Cart.findOneAndUpdate(
+          { userID },
+          {
+            $set: {
+              itemsList: [],
+            },
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+      }
+    );
 
     // 4) send data
     res.status(201).json({
@@ -97,7 +122,7 @@ export const deleteOrder = async (
     // 1) check if the req.user.id === req.params.ownerId and the user is not an admin
     if (req.user?.id !== req.params.userID && req.user?.role != 'admin') {
       return next(
-        new AppError(403, 'you are not allowed to  perform this action')
+        new AppError(403, 'you are not allowed to perform this action')
       );
     }
 

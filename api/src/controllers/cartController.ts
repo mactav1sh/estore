@@ -37,11 +37,15 @@ export const getUserCart = async (
         new AppError(403, 'you are not allowed to  perform this action')
       );
     }
-
     // 2) get the cart that belongs to a user
     const cart = await Cart.find({ userID: req.params.userID }).populate(
       'itemsList'
     );
+
+    if (cart.length === 0)
+      return next(
+        new AppError(403, "there's no cart associated with this user")
+      );
 
     // 3) send data
     res.status(200).json({
@@ -96,17 +100,14 @@ export const addItem = async (
   next: NextFunction
 ) => {
   try {
-    // 1) get the product id and change it into objectId
-    const productID = new mongoose.Types.ObjectId(req.params.productID);
-
-    // 2) check if the req.user.id === req.params.ownerId and the user is not an admin
+    // 1) check if the req.user.id === req.params.ownerId and the user is not an admin
     if (req.user?.id !== req.params.ownerID && req.user?.role != 'admin') {
       return next(
         new AppError(403, 'you are not allowed to  perform this action')
       );
     }
 
-    // 3) find and update cart (if it exists)
+    // 2) find and update cart (if it exists)
     const updatedCart = await Cart.findOneAndUpdate(
       { userID: req.params.userID },
       {
@@ -120,7 +121,7 @@ export const addItem = async (
       }
     );
 
-    // 4) check if there's a cart with this user id
+    // 3) check if there's a cart with this user id
     if (!updatedCart)
       return next(
         new AppError(
@@ -129,7 +130,7 @@ export const addItem = async (
         )
       );
 
-    // 5) send data
+    // 4) send data
     res.status(200).json({
       status: 'success',
       cart: updatedCart,
