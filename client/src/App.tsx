@@ -9,6 +9,7 @@ import Home from './features/misc/routes/Home';
 import ProtectedRoute from './lib/Authorization';
 import Header from './components/layout/Header/Header';
 import Footer from './components/layout/Footer/Footer';
+import OrderConfirmation from './features/Orders/routes/OrderConfirmation';
 
 function App() {
   return (
@@ -26,6 +27,10 @@ function App() {
         {/* CART */}
         <Route path="/cart" element={<ProtectedRoute path="/login" />}>
           <Route path="/cart" element={<Cart />} />
+        </Route>
+        {/* ORDER */}
+        <Route path="/order" element={<ProtectedRoute path="/login" />}>
+          <Route path="/order" element={<OrderConfirmation />} />
         </Route>
         {/* NOT FOUND */}
         <Route path="*" element={<h1 className="font-bold">NOT FOUND</h1>} />
