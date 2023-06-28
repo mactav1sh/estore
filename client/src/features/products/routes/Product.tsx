@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { BsCart4, BsStarFill, BsFillCartCheckFill } from 'react-icons/bs';
 import { useGetProduct } from '../api/getProduct';
-import LoadingPage from '../../misc/routes/LoadingPage';
+import { LoadingPage } from '../../misc';
 import { useAddCartProduct } from '../api/addCartProduct';
 import useAuth from '../../../hooks/useAuth';
-import ContentWrapper from '../../../components/elements/ContentWrapper';
+import { ContentWrapper } from '../../../components';
 
-const Product = () => {
+export const Product = () => {
   const [showLoginLink, setShowLoginLink] = useState(false);
 
   const { productId } = useParams();
@@ -132,5 +132,3 @@ const Product = () => {
     </main>
   );
 };
-
-export default Product;

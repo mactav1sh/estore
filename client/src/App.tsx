@@ -1,15 +1,12 @@
 import { Routes, Route } from 'react-router-dom';
 import AppProviders from './AppProviders';
-import Login from './features/authentication/routes/Login';
-import Register from './features/authentication/routes/Register';
-import Product from './features/products/routes/Product';
-import Products from './features/products/routes/Products';
-import Cart from './features/cart/routes/Cart';
-import Home from './features/misc/routes/Home';
+import { Login, Register } from './features/authentication';
+import { Product, Products } from './features/products';
+import { Cart } from './features/cart';
+import { Home } from './features/misc';
+import { Footer, Header } from './components';
+import { OrderConfirmationForm } from './features/Orders';
 import ProtectedRoute from './lib/Authorization';
-import Header from './components/layout/Header/Header';
-import Footer from './components/layout/Footer/Footer';
-import OrderConfirmation from './features/Orders/routes/OrderConfirmation';
 
 function App() {
   return (
@@ -30,7 +27,7 @@ function App() {
         </Route>
         {/* ORDER */}
         <Route path="/order" element={<ProtectedRoute path="/login" />}>
-          <Route path="/order" element={<OrderConfirmation />} />
+          <Route path="/order" element={<OrderConfirmationForm />} />
         </Route>
         {/* NOT FOUND */}
         <Route path="*" element={<h1 className="font-bold">NOT FOUND</h1>} />

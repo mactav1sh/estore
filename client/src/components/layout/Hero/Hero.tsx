@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-const Hero = () => {
+export const Hero = () => {
   return (
     <section className="mb-36 flex h-screen items-center bg-home bg-fixed px-2">
       <div className="mx-auto flex w-full max-w-7xl flex-col items-center md:items-start">
@@ -24,5 +24,3 @@ const Hero = () => {
     </section>
   );
 };
-
-export default Hero;

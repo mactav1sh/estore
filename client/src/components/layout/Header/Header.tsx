@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { BsCart2 } from 'react-icons/bs';
-import MobileHeader from './MobileHeader';
-import DesktopHeader from './DesktopHeader';
+import { MobileHeader } from './MobileHeader';
+import { DesktopHeader } from './DesktopHeader';
 import { useGetCart } from '../../../features/cart/api/getCart';
 
-const Header = () => {
+export const Header = () => {
   const [windowWidth, SetWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -22,8 +22,6 @@ const Header = () => {
 
   return windowWidth > 768 ? <DesktopHeader /> : <MobileHeader />;
 };
-
-export default Header;
 
 export function SearchBar({
   styles,

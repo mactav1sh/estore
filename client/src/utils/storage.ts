@@ -1,6 +1,6 @@
 const STORAGE_PREFIX = '__estore__';
 
-const storage = {
+export const storage = {
   setItem(key: string, value: any) {
     window.localStorage.setItem(STORAGE_PREFIX + key, JSON.stringify(value));
   },
@@ -15,5 +15,3 @@ const storage = {
     return window.localStorage.removeItem(STORAGE_PREFIX + key);
   },
 };
-
-export default storage;

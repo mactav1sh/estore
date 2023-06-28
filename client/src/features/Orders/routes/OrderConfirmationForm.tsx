@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Product } from '../../products';
+import { IProduct } from '../../products';
 import { useCreateOrder } from '../api/createOrder';
-import LoadingOverlay from '../../../components/elements/LoadingOverlay';
+import { LoadingOverlay } from '../../../components';
 import useAuth from '../../../hooks/useAuth';
 
-const OrderForm = () => {
+export const OrderConfirmationForm = () => {
   const [shippingDetails, setShippingDetails] = useState({
     address: '',
     city: '',
@@ -29,7 +29,7 @@ const OrderForm = () => {
     const data = {
       paymentMethod: 'cashOnDelivery',
       status: 'confirmed',
-      items: state.itemsList.map((item: Product) => item._id),
+      items: state.itemsList.map((item: IProduct) => item._id),
       taxPrice: state.taxes,
       shippingPrice: state.shippingCost,
       totalPrice: state.totalCost,
@@ -174,5 +174,3 @@ const OrderForm = () => {
     </main>
   );
 };
-
-export default OrderForm;

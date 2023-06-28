@@ -1,7 +1,7 @@
 import { AxiosError } from 'axios';
 import { useEffect, useReducer } from 'react';
 import { axios } from '../../../lib/axios';
-import storage from '../../../utils/storage';
+import { storage } from '../../../utils';
 import { IUser, IState, ACTIONTYPE } from '../types';
 
 // REDUCER

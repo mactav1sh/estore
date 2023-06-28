@@ -4,7 +4,7 @@ interface Props {
   active?: boolean;
 }
 
-const HBToggle = ({ onClick, classes, active = false }: Props) => {
+export const HBToggle = ({ onClick, classes, active = false }: Props) => {
   const handleClick = () => {
     onClick?.();
   };
@@ -21,5 +21,3 @@ const HBToggle = ({ onClick, classes, active = false }: Props) => {
     </div>
   );
 };
-
-export default HBToggle;

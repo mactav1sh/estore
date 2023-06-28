@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useEffect } from 'react';
 import { useProvideAuth } from '../features/authentication';
 import { IUser } from '../features/authentication/types';
-import storage from '../utils/storage';
+import { storage } from '../utils';
 
 interface IProps {
   children?: ReactNode;

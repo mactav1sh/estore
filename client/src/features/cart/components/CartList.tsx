@@ -1,9 +1,8 @@
-import React from 'react';
-import { Product } from '../../products/types';
+import { IProduct } from '../../products';
 import CartListItem from './CartListItem';
 
 interface Props {
-  items: Product[];
+  items: IProduct[];
 }
 const CartList = ({ items }: Props) => {
   return (

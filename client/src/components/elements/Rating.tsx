@@ -6,7 +6,7 @@ interface IProps {
   callbackFn?: Function;
 }
 
-const Rating = ({ maxValue = 5, callbackFn }: IProps) => {
+export const Rating = ({ maxValue = 5, callbackFn }: IProps) => {
   const [hoveredStarIndex, setHoveredStarIndex] = useState<number>(-1);
   const [selectedStarIndex, setSelectedStarIndex] = useState<number>(1);
 
@@ -45,7 +45,3 @@ const Rating = ({ maxValue = 5, callbackFn }: IProps) => {
     </div>
   );
 };
-
-export default Rating;
-
-// on click set selected

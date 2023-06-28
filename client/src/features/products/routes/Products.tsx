@@ -1,12 +1,12 @@
 import { useGetProducts } from '../api/getProducts';
-import { Product } from '../types';
-import LoadingPage from '../../misc/routes/LoadingPage';
+import { IProduct } from '../types';
+import { LoadingPage } from '../../misc';
 import ProductCard from '../components/ProductCard';
 import { useSearchParams } from 'react-router-dom';
-import { createQueryStr } from '../../../utils/createQueryStr';
+import { createQueryStr } from '../../../utils';
 import { useEffect, useState } from 'react';
 
-const Products = () => {
+export const Products = () => {
   const [page, setPage] = useState(1);
   const [params] = useSearchParams();
 
@@ -26,7 +26,7 @@ const Products = () => {
       {/* MAIN CONTENT */}
       {data.products && data.products.length > 0 ? (
         <div className="grid w-full grid-cols-1 justify-items-center gap-y-8 rounded-md p-2.5 md:w-auto md:grid-cols-2 md:gap-7 lg:grid-cols-4">
-          {data.products.map((product: Product) => (
+          {data.products.map((product: IProduct) => (
             <ProductCard product={product} key={product._id} />
           ))}
         </div>
@@ -59,5 +59,3 @@ const Products = () => {
     </main>
   );
 };
-
-export default Products;

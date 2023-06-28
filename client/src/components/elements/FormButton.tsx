@@ -2,7 +2,7 @@ interface IProps {
   title: string;
 }
 
-const FormButton = ({ title }: IProps) => {
+export const FormButton = ({ title }: IProps) => {
   return (
     <button
       type="submit"
@@ -12,5 +12,3 @@ const FormButton = ({ title }: IProps) => {
     </button>
   );
 };
-
-export default FormButton;

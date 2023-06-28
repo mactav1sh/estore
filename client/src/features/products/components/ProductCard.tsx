@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-import RatingStars from '../../../components/elements/RatingStars';
-import { Product } from '../types';
+import { RatingStars } from '../../../components';
+import { IProduct } from '..';
 
-const ProductCard = ({ product }: { product: Product }) => {
+const ProductCard = ({ product }: { product: IProduct }) => {
   return (
     <Link
       to={`/products/${product._id}`}

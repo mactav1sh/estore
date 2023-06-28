@@ -2,15 +2,13 @@ import { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { BsPersonSquare } from 'react-icons/bs';
 import { MdCelebration } from 'react-icons/md';
-import AnnouncementBar from '../../elements/AnnouncementBar';
-import ContentWrapper from '../../elements/ContentWrapper';
+import { AnnouncementBar, ContentWrapper, Divider } from '../..';
 import useAuth from '../../../hooks/useAuth';
 import useOnOutsideClick from '../../../hooks/useOnOutsideClick';
-import Divider from '../../elements/Divider';
-import storage from '../../../utils/storage';
+import { storage } from '../../../utils';
 import { SearchBar, CartStatus } from './Header';
 
-const DesktopHeader = () => {
+export const DesktopHeader = () => {
   const accountRef = useRef<HTMLDivElement>(null);
   const [openAccount, setOpenAccount] = useState(false);
 
@@ -102,5 +100,3 @@ const DesktopHeader = () => {
     </header>
   );
 };
-
-export default DesktopHeader;

@@ -3,7 +3,7 @@ import Slider, { Settings } from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-export default function Carousel({ children }: { children: ReactNode }) {
+export function Carousel({ children }: { children: ReactNode }) {
   const settings: Settings = {
     arrows: true,
     dots: true,

@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { Link } from 'react-router-dom';
-import ContentWrapper from '../../elements/ContentWrapper';
+import { ContentWrapper } from '../..';
 
-const Footer = () => {
+export const Footer = () => {
   const companyList = ['About us', 'Blog', 'Partnerships', 'Careers'];
   const additionalList = [
     'F.A.Q',
@@ -67,5 +67,3 @@ function FooterList({ title, items }: { title: string; items: any[] }) {
     </div>
   );
 }
-
-export default Footer;

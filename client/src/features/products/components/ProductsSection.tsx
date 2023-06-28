@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
-import ContentWrapper from '../../../components/elements/ContentWrapper';
-import { Product } from '../types';
+import { ContentWrapper } from '../../../components';
+import { IProduct } from '..';
 import ProductCard from './ProductCard';
 
 interface Props {
-  products: Product[];
+  products: IProduct[];
   title?: string;
   secondaryText?: string;
 }

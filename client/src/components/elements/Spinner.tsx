@@ -1,4 +1,3 @@
-import React from 'react';
 import { BiLoader } from 'react-icons/bi';
 
 interface IProps {
@@ -11,12 +10,10 @@ const sizes = {
   lg: '2.9rem',
 };
 
-const Spinner = ({ size = 'sm' }: IProps) => {
+export const Spinner = ({ size = 'sm' }: IProps) => {
   return (
     <div className="animate-ping text-pink-600">
       <BiLoader size={sizes[size]} />
     </div>
   );
 };
-
-export default Spinner;

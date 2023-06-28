@@ -2,10 +2,10 @@ import { useNavigate } from 'react-router-dom';
 import CartList from '../components/CartList';
 import useAuth from '../../../hooks/useAuth';
 import { useGetCart } from '../api/getCart';
-import Spinner from '../../../components/elements/Spinner';
-import { calcProductCost } from '../../../utils/calcCost';
+import { Spinner } from '../../../components';
+import { calcProductCost } from '../../../utils';
 
-const Cart = () => {
+export const Cart = () => {
   const { user } = useAuth();
   const additionalCost = {
     taxPercentage: 0.2,
@@ -94,5 +94,3 @@ const Cart = () => {
     </main>
   );
 };
-
-export default Cart;

@@ -2,12 +2,11 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BsPersonSquare } from 'react-icons/bs';
 import useAuth from '../../../hooks/useAuth';
-import Divider from '../../elements/Divider';
-import storage from '../../../utils/storage';
-import HBToggle from '../../elements/HBToggle';
+import { Divider, HBToggle } from '../..';
+import { storage } from '../../../utils';
 import { SearchBar, CartStatus } from './Header';
 
-function MobileHeader() {
+export function MobileHeader() {
   const [openMenu, setOpenMenu] = useState(false);
   const { user } = useAuth();
 
@@ -85,5 +84,3 @@ function MobileHeader() {
     </header>
   );
 }
-
-export default MobileHeader;

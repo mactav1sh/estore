@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import storage from '../utils/storage';
+import { storage } from '../utils';
 
 export const axios = Axios.create({
   baseURL: process.env.REACT_APP_API_URL,

@@ -1,7 +1,7 @@
 import { ReactNode, CSSProperties } from 'react';
-import ContentWrapper from './ContentWrapper';
+import { ContentWrapper } from './ContentWrapper';
 
-const AnnouncementBar = ({
+export const AnnouncementBar = ({
   children,
   styles,
 }: {
@@ -18,5 +18,3 @@ const AnnouncementBar = ({
     </div>
   );
 };
-
-export default AnnouncementBar;

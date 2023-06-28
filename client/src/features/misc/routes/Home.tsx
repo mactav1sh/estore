@@ -1,17 +1,14 @@
 import { Link } from 'react-router-dom';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import Carousel from '../../../components/widgets/Carousel';
-import Hero from '../../../components/layout/Hero/Hero';
-import ContentWrapper from '../../../components/elements/ContentWrapper';
+import { Carousel, Hero, ContentWrapper, Spinner } from '../../../components';
 import { ReactComponent as EmailLogo } from '../../../assets/svgs/email.svg';
-import ProductsSection from '../../products/components/ProductsSection';
-import { useGetProducts } from '../../products/api/getProducts';
-import { getIcon } from '../../../utils/getIcon';
-import { Product } from '../../products';
-import Spinner from '../../../components/elements/Spinner';
+import ProductsSection from '../../products';
+import { useGetProducts } from '../../products';
+import { getIcon } from '../../../utils';
+import { IProduct } from '../../products';
 
-const Home = () => {
+export const Home = () => {
   const { isLoading: categoriesLoading, data: categoriesData } = useGetProducts(
     '?fields=category',
     'categories'
@@ -28,7 +25,7 @@ const Home = () => {
   );
 
   const getCategories = (data: any[]) => {
-    return data.reduce((acc: string[], product: Product) => {
+    return data.reduce((acc: string[], product: IProduct) => {
       if (!acc.includes(product.category)) {
         acc.push(product.category);
       }
@@ -136,5 +133,3 @@ const Home = () => {
     );
   }
 };
-
-export default Home;

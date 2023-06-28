@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import useAuth from '../../../hooks/useAuth';
-import FormButton from '../../../components/elements/FormButton';
+import { FormButton } from '../../../components';
 
 const RegisterForm = () => {
   const [formValues, setFormValues] = useState({

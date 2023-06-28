@@ -6,7 +6,7 @@ interface IProps {
   additionalClasses?: string;
 }
 
-const RatingStars = ({
+export const RatingStars = ({
   maxValue = 5,
   rating = 3,
   additionalClasses,
@@ -27,5 +27,3 @@ const RatingStars = ({
     </div>
   );
 };
-
-export default RatingStars;

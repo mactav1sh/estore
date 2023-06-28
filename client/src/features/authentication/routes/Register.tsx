@@ -1,7 +1,7 @@
 import Layout from '../components/Layout';
 import RegisterForm from '../components/RegisterForm';
 
-const Register = () => {
+export const Register = () => {
   return (
     <Layout
       title="create a new account"
@@ -15,5 +15,3 @@ const Register = () => {
     </Layout>
   );
 };
-
-export default Register;

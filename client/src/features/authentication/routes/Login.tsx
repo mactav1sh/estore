@@ -1,7 +1,7 @@
 import Layout from '../components/Layout';
 import LoginForm from '../components/LoginForm';
 
-const Login = () => {
+export const Login = () => {
   return (
     <Layout
       title="Login"
@@ -15,5 +15,3 @@ const Login = () => {
     </Layout>
   );
 };
-
-export default Login;

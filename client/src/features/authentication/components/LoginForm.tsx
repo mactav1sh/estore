@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import FormButton from '../../../components/elements/FormButton';
+import { FormButton } from '../../../components';
 import useAuth from '../../../hooks/useAuth';
 
 const LoginForm = () => {

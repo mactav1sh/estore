@@ -1,9 +1,9 @@
 import { FaTimes } from 'react-icons/fa';
 import useAuth from '../../../hooks/useAuth';
-import { Product } from '../../products';
+import { IProduct } from '../../products';
 import { useDeleteCartItem } from '../api/deleteCartItem';
 interface Props {
-  item: Product;
+  item: IProduct;
 }
 
 const CartListItem = ({ item }: Props) => {
