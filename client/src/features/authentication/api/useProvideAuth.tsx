@@ -59,8 +59,7 @@ function useProvideAuth() {
         email,
         password,
       });
-
-      if (response.statusText === 'OK') {
+      if (response.status === 200) {
         dispatch({ type: 'SET_USER', payload: response.data.user });
 
         // Get token from headers
@@ -99,7 +98,7 @@ function useProvideAuth() {
         password,
         passwordConfirm,
       });
-      if (response.statusText === 'Created') {
+      if (response.status === 201) {
         dispatch({ type: 'SET_USER', payload: response.data.user });
 
         // Get token from headers
