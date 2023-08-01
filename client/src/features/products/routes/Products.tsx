@@ -15,7 +15,6 @@ export const Products = () => {
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    console.log('scrolled to top');
   }, [page]);
 
   const { isLoading, data } = useGetProducts(queryStr, queryStr);

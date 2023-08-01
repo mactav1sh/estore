@@ -1,23 +1,32 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { BsPersonSquare } from 'react-icons/bs';
 import useAuth from '../../../hooks/useAuth';
 import { Divider, HBToggle } from '../..';
 import { storage } from '../../../utils';
 import { SearchBar, CartStatus } from './Header';
+import useOnOutsideClick from '../../../hooks/useOnOutsideClick';
 
 export function MobileHeader() {
+  const navRef = useRef<HTMLDivElement>(null);
   const [openMenu, setOpenMenu] = useState(false);
   const { user } = useAuth();
+  const location = useLocation();
+
+  useOnOutsideClick(navRef, setOpenMenu);
 
   const handleLogout = () => {
     storage.removeItem('token');
     window.location.reload();
   };
 
+  useEffect(() => {
+    setOpenMenu(false);
+  }, [location.pathname]);
+
   return (
     <header className="fixed top-0 z-50 w-full">
-      <div className="bg-brand-pink-600 px-3 py-2 shadow-xl">
+      <div ref={navRef} className="bg-brand-pink-600 px-3 py-2 shadow-xl">
         <div className="flex items-center justify-between">
           {/* logo */}
           <Link
@@ -35,10 +44,7 @@ export function MobileHeader() {
             openMenu ? 'h-60' : 'h-0'
           }`}
         >
-          <div
-            className="mb-7 flex flex-col justify-center space-y-1 text-center"
-            onClick={() => setOpenMenu((p) => !p)}
-          >
+          <div className="mb-7 flex flex-col justify-center space-y-1 text-center">
             {!user && (
               <>
                 <Link
@@ -61,14 +67,14 @@ export function MobileHeader() {
                 <div className="mb-1 flex items-center justify-center space-x-2 text-white">
                   <BsPersonSquare size={20} />
                   <p className="text-lg font-semibold capitalize ">
-                    abdelrahman
+                    {user.name}
                   </p>
                 </div>
                 <div className="flex flex-col justify-center gap-y-2">
                   <CartStatus styles="text-white mx-auto" userId={user._id} />
                   <button
                     onClick={handleLogout}
-                    className="mt-2 inline-block border py-1 px-1 text-xs font-semibold tracking-wider text-white duration-200"
+                    className="mt-2 inline-block border py-1 px-1 text-xs font-semibold tracking-wider text-white duration-200 hover:bg-brand-pink-700"
                   >
                     Logout
                   </button>
@@ -78,7 +84,7 @@ export function MobileHeader() {
           </div>
           {/* - cart */}
           <Divider />
-          <SearchBar onBtnClick={() => setOpenMenu((p) => !p)} styles="mt-5" />
+          <SearchBar styles="mt-5" />
         </div>
       </div>
     </header>

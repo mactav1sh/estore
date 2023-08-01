@@ -25,7 +25,6 @@ export const Header = () => {
 
 export function SearchBar({
   styles,
-  onBtnClick,
 }: {
   styles?: string;
   onBtnClick?: () => void;
@@ -34,7 +33,6 @@ export function SearchBar({
   const [text, setText] = useState('');
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    onBtnClick?.();
     setText('');
     navigate(`/products?find=${text}`);
   };
@@ -73,13 +71,13 @@ export function CartStatus({
   return (
     <Link
       to="cart"
-      className={`flex items-center space-x-1 rounded-md duration-200 hover:bg-brand-pink-700 ${styles}`.trim()}
+      className={`flex items-center space-x-1 rounded-md py-1 px-1.5 duration-200 hover:bg-brand-pink-700 ${styles}`.trim()}
     >
       <div className="flex items-center justify-center space-x-0.5">
         <BsCart2 />
-        <span>Cart</span>
+        <span className="text-sm">Cart</span>
       </div>
-      <div className="flex h-3 w-3 items-center justify-center rounded-full bg-brand-pink-50 text-[0.5rem] font-semibold text-brand-pink-900">
+      <div className="flex h-2.5 w-2.5 items-center justify-center rounded-full bg-brand-pink-50 text-[0.5rem] font-semibold text-brand-pink-900">
         <span>{cartData?.data?.cart?.itemsList?.length || 0}</span>
       </div>
     </Link>
