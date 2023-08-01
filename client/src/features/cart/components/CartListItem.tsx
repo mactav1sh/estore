@@ -8,10 +8,9 @@ interface Props {
 
 const CartListItem = ({ item }: Props) => {
   const { user } = useAuth();
-
-  const deleteItemMutation = useDeleteCartItem(user?._id as string);
-
-  if (deleteItemMutation.isLoading) return <p>loading...</p>;
+  const { mutate, isSuccess, isLoading } = useDeleteCartItem(
+    user?._id as string
+  );
 
   return (
     <li className="flex w-full items-center justify-around border-b pb-3 font-medium last:border-none">
@@ -24,16 +23,21 @@ const CartListItem = ({ item }: Props) => {
         {item.onSale ? item.salePrice : item.price}$
       </span>
       <button
-        className="mr-2 rounded-full bg-slate-200 p-1 duration-200 hover:text-red-600"
+        disabled={isSuccess || isLoading}
+        className="mr-2 rounded-full bg-slate-200 p-1 duration-200 hover:text-red-600 disabled:cursor-not-allowed disabled:text-gray-600"
         type="button"
         onClick={() =>
-          deleteItemMutation.mutate({
+          mutate({
             userId: user?._id as string,
             productId: item._id,
           })
         }
       >
-        <FaTimes className="h-3 w-3 md:h-3.5 md:w-3.5" />
+        <FaTimes
+          className={`h-3 w-3 md:h-3.5 md:w-3.5 ${
+            isLoading || isSuccess ? 'animate-spin' : ''
+          }`}
+        />
       </button>
     </li>
   );
