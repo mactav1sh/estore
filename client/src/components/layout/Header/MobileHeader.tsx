@@ -31,7 +31,7 @@ export function MobileHeader() {
           {/* logo */}
           <Link
             to="/"
-            className="font-logo text-2xl font-semibold uppercase text-white"
+            className="font-logo text-xl font-semibold uppercase text-white"
           >
             estore
           </Link>

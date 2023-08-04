@@ -34,7 +34,7 @@ export const Home = () => {
   };
 
   return (
-    <main>
+    <main className="overflow-x-hidden">
       {/* Hero - section */}
       <Hero />
       {/* Carousel - Section */}
@@ -44,7 +44,7 @@ export const Home = () => {
         </section>
       ) : (
         <section className="flex items-center justify-center px-2 pb-36">
-          <div className="mx-auto max-w-xs md:max-w-2xl lg:max-w-4xl xl:max-w-7xl">
+          <div className="max-w-[18rem] md:max-w-2xl lg:max-w-4xl xl:max-w-7xl">
             <Carousel>
               {getCategories(categoriesData.products).map(
                 (categoryName: string) => (
@@ -111,15 +111,16 @@ export const Home = () => {
   );
 
   function Slide({ title }: { title: string }) {
-    const Icon = getIcon(title || 'headphones');
+    const Icon = getIcon(title);
     return (
-      <div className="group relative my-4 mr-3 ml-4 overflow-hidden rounded-md bg-brand-pink-50 bg-contain bg-right bg-no-repeat p-8 shadow">
-        <div className="mb-24 ">
-          <p className="mb-2 text-2xl font-bold capitalize text-brand-pink-900">
+      <div className="group relative my-4 mr-2 ml-3 overflow-hidden rounded-md bg-brand-pink-50 bg-contain bg-right bg-no-repeat p-4 shadow">
+        <Icon className="absolute bottom-12 right-4 h-20 w-20 text-white duration-300 group-hover:text-brand-pink-200 md:bottom-4 md:right-4 md:h-36 md:w-36" />
+        <div className="mb-20 md:mb-24">
+          <p className="mb-2 text-xl font-bold capitalize text-brand-pink-900 md:text-2xl">
             {title}
           </p>
           <p className="max-w-[14rem] text-brand-pink-900 opacity-80">
-            Lorem ipsum dolor sit, amet consectetur adipisicing dolor
+            Great products at amazing prices.
           </p>
         </div>
         <Link
@@ -128,7 +129,6 @@ export const Home = () => {
         >
           Shop Now
         </Link>
-        <Icon className="absolute bottom-12 right-4 h-24 w-24 text-white duration-300 group-hover:text-brand-pink-200 md:bottom-4 md:right-4 md:h-36 md:w-36" />
       </div>
     );
   }

@@ -13,12 +13,12 @@ export const Footer = () => {
 
   return (
     <footer className="w-full bg-slate-700 text-white">
-      <a
-        href="#"
+      <div
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         className="inline-block w-full bg-slate-600 py-1.5 text-center text-xs font-semibold capitalize duration-200 hover:bg-[#5A697D]"
       >
         back to top
-      </a>
+      </div>
       <ContentWrapper>
         <div className="flex flex-col items-center  space-y-6 border-b border-b-slate-600 py-5 md:flex-row md:justify-around md:space-y-0 md:space-x-2">
           <div className="text-center md:flex-[2] md:text-left">

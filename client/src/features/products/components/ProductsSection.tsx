@@ -13,13 +13,13 @@ const ProductsSection = ({ products, title, secondaryText = '' }: Props) => {
   return (
     <section className="mb-20 md:mb-24 lg:mb-28">
       <ContentWrapper>
-        <div className="item mb-10 flex items-center justify-between md:mb-16">
-          <h3 className="text-xl font-bold capitalize md:text-2xl lg:text-4xl">
+        <div className="item mb-10 flex items-center justify-between px-6 md:mb-16 md:px-0">
+          <h3 className="text-lg font-bold capitalize md:text-2xl lg:text-4xl">
             {title}
           </h3>
           <Link
             to="products"
-            className="h-fit text-sm font-semibold capitalize text-gray-500 md:text-base"
+            className="h-fit text-xs font-semibold capitalize text-gray-500 md:text-base"
           >
             {secondaryText}
           </Link>

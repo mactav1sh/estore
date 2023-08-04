@@ -5,9 +5,9 @@ interface IProps {
 }
 
 const sizes = {
-  sm: '1.5rem',
-  md: '2.2rem',
-  lg: '2.9rem',
+  sm: '1.2rem',
+  md: '1.8rem',
+  lg: '2.2rem',
 };
 
 export const Spinner = ({ size = 'sm' }: IProps) => {

@@ -29,7 +29,7 @@ body {
 .hb-btn {
   width: 80px;
   cursor: pointer;
-  transform: scale(50%);
+  transform: scale(35%);
 }
 
 .hb-btn span {
