@@ -101,7 +101,7 @@ export const addItem = async (
 ) => {
   try {
     // 1) check if the req.user.id === req.params.ownerId and the user is not an admin
-    if (req.user?.id !== req.params.ownerID && req.user?.role != 'admin') {
+    if (req.user?.id !== req.params.userID && req.user?.role != 'admin') {
       return next(
         new AppError(403, 'you are not allowed to  perform this action')
       );
@@ -151,7 +151,7 @@ export const removeItem = async (
     const productID = new mongoose.Types.ObjectId(req.params.productID);
 
     // 2) check if the req.user.id === req.params.ownerId and the user is not an admin
-    if (req.user?.id !== req.params.ownerID && req.user?.role != 'admin') {
+    if (req.user?.id !== req.params.userID && req.user?.role != 'admin') {
       return next(
         new AppError(403, 'you are not allowed to  perform this action')
       );
