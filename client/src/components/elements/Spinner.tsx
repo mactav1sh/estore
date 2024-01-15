@@ -12,7 +12,7 @@ const sizes = {
 
 export const Spinner = ({ size = 'sm' }: IProps) => {
   return (
-    <div className="animate-ping text-pink-600">
+    <div className="animate-ping text-brand-pink-600">
       <BiLoader size={sizes[size]} />
     </div>
   );
