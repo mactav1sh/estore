@@ -1,0 +1,164 @@
+[
+  {
+    "title": "SteelSeries x1",
+    "description": "a great headphone for gaming",
+    "category": "headphones",
+    "price": 80,
+    "onSale": true,
+    "salePrice": 70,
+    "availablePieces": 1,
+    "imageUrl": "https://res.cloudinary.com/doaw1mqkw/image/upload/v1681822631/e-store/headphone3_wimavy.png"
+  },
+  {
+    "title": "Rocks 82",
+    "description": "a great headphone for gaming",
+    "category": "headphones",
+    "price": 120,
+    "onSale": false,
+    "availablePieces": 1,
+    "imageUrl": "https://res.cloudinary.com/doaw1mqkw/image/upload/v1681822626/e-store/headphone2_vmz6xw.png"
+  },
+  {
+    "title": "Astro z12-2023",
+    "description": "a great headphone for gaming",
+    "category": "headphones",
+    "price": 320,
+    "onSale": true,
+    "salePrice": 280,
+    "availablePieces": 1,
+    "imageUrl": "https://res.cloudinary.com/doaw1mqkw/image/upload/v1681822613/e-store/headphone1_r8wtoj.png"
+  },
+  {
+    "title": "Shell 15.6 2023",
+    "description": "laptop with amazing features",
+    "category": "Laptops",
+    "price": 1520,
+    "onSale": true,
+    "salePrice": 1260,
+    "availablePieces": 1,
+    "imageUrl": "https://res.cloudinary.com/doaw1mqkw/image/upload/v1681831841/e-store/laptop2_kf2tbu.png"
+  },
+  {
+    "title": "XP 14.2 2023",
+    "description": "laptop with amazing features",
+    "category": "Laptops",
+    "price": 1310,
+    "onSale": true,
+    "salePrice": 1160,
+    "availablePieces": 1,
+    "imageUrl": "https://res.cloudinary.com/doaw1mqkw/image/upload/v1681831840/e-store/laptop1_qohoxr.png"
+  },
+  {
+    "title": "Hackintosh 14.2 2023",
+    "description": "laptop with amazing features",
+    "category": "Laptops",
+    "price": 2000,
+    "onSale": false,
+    "availablePieces": 1,
+    "imageUrl": "https://res.cloudinary.com/doaw1mqkw/image/upload/v1681831837/e-store/laptop3_qwzplw.png"
+  },
+  {
+    "title": "Zota Speakers L1",
+    "description": "great lossless, powerful sound",
+    "category": "Speakers",
+    "price": 999,
+    "onSale": false,
+    "availablePieces": 1,
+    "imageUrl": "https://res.cloudinary.com/doaw1mqkw/image/upload/v1681831113/e-store/speaker1_fjp3os.png"
+  },
+  {
+    "title": "LX Portable Speakers",
+    "description": "great lossless, powerful sound",
+    "category": "Speakers",
+    "price": 200,
+    "onSale": true,
+    "salePrice": 120,
+    "availablePieces": 1,
+    "imageUrl": "https://res.cloudinary.com/doaw1mqkw/image/upload/v1681831115/e-store/speaker2_qbo0qg.png"
+  },
+  {
+    "title": "LX Pocket 2023",
+    "description": "great lossless, powerful sound",
+    "category": "Speakers",
+    "price": 100,
+    "onSale": true,
+    "salePrice": 80,
+    "availablePieces": 1,
+    "imageUrl": "https://res.cloudinary.com/doaw1mqkw/image/upload/v1681831115/e-store/speaker3_pjcjla.png"
+  },
+  {
+    "title": "MechKeys N1 ltd",
+    "description": "A great keyboard",
+    "category": "Keyboards",
+    "price": 180,
+    "onSale": false,
+    "availablePieces": 1,
+    "imageUrl": "https://res.cloudinary.com/doaw1mqkw/image/upload/v1681830463/e-store/keyboard1_tjdaxk.png"
+  },
+  {
+    "title": "BlueFalcon Higher v1",
+    "description": "A great keyboard",
+    "category": "Keyboards",
+    "price": 180,
+    "onSale": true,
+    "salePrice": 160,
+    "availablePieces": 1,
+    "imageUrl": "https://res.cloudinary.com/doaw1mqkw/image/upload/v1681830462/e-store/keyboard3_gyxjjw.png"
+  },
+  {
+    "title": "Hawks lightening",
+    "description": "A great keyboard",
+    "category": "Keyboards",
+    "price": 230,
+    "onSale": true,
+    "salePrice": 200,
+    "availablePieces": 1,
+    "imageUrl": "https://res.cloudinary.com/doaw1mqkw/image/upload/v1681830459/e-store/keyboard2_vq2zdg.png"
+  },
+  {
+    "title": "Hawks legendary",
+    "description": "an iconic mouse",
+    "category": "Mice",
+    "price": 130,
+    "onSale": false,
+    "availablePieces": 1,
+    "imageUrl": "https://res.cloudinary.com/doaw1mqkw/image/upload/v1681826673/e-store/mouse3_udwees.png"
+  },
+  {
+    "title": "SteelSeries knight",
+    "description": "an iconic mouse",
+    "category": "Mice",
+    "price": 150,
+    "onSale": false,
+    "availablePieces": 1,
+    "imageUrl": "https://res.cloudinary.com/doaw1mqkw/image/upload/v1681826319/e-store/mouse1_trc3hl.png"
+  },
+  {
+    "title": "SteelSeries M1",
+    "description": "An immersive 4K display",
+    "category": "Displays",
+    "price": 600,
+    "onSale": false,
+    "availablePieces": 1,
+    "imageUrl": "https://res.cloudinary.com/doaw1mqkw/image/upload/v1681827250/e-store/display2_ck0ip8.png"
+  },
+  {
+    "title": "Lvlup Extreme 2023",
+    "description": "An immersive 4K display",
+    "category": "Displays",
+    "price": 700,
+    "onSale": true,
+    "salePrice": 630,
+    "availablePieces": 1,
+    "imageUrl": "https://res.cloudinary.com/doaw1mqkw/image/upload/v1681827252/e-store/display3_hqfyqj.png"
+  },
+  {
+    "title": "TopSeries H1",
+    "description": "An immersive 4K display",
+    "category": "Displays",
+    "price": 550,
+    "onSale": false,
+    "availablePieces": 1,
+    "imageUrl": "https://res.cloudinary.com/doaw1mqkw/image/upload/v1681827248/e-store/display1_zqmfvi.png"
+  }
+]

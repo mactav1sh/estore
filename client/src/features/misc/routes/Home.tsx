@@ -1,11 +1,9 @@
-import { Link } from 'react-router-dom';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { Carousel, Hero, ContentWrapper, Spinner } from '../../../components';
+import { Carousel, Hero, ContentWrapper, Slide } from '../../../components';
 import { ReactComponent as EmailLogo } from '../../../assets/svgs/email.svg';
 import ProductsSection from '../../products';
 import { useGetProducts } from '../../products';
-import { getIcon } from '../../../utils';
 import { IProduct } from '../../products';
 
 export const Home = () => {
@@ -38,48 +36,35 @@ export const Home = () => {
       {/* Hero - section */}
       <Hero />
       {/* Carousel - Section */}
-      {categoriesLoading ? (
-        <section className="mb-32 flex items-center justify-center">
-          <Spinner size="lg" />
-        </section>
-      ) : (
-        <section className="flex items-center justify-center px-2 pb-36">
-          <div className="max-w-[18rem] md:max-w-2xl lg:max-w-4xl xl:max-w-7xl">
-            <Carousel>
-              {getCategories(categoriesData.products).map(
-                (categoryName: string) => (
-                  <Slide key={categoryName} title={categoryName} />
+      <section className="flex items-center justify-center px-2 pb-36">
+        <div className="max-w-[18rem] md:max-w-2xl lg:max-w-4xl xl:max-w-7xl">
+          <Carousel>
+            {!categoriesLoading && categoriesData
+              ? getCategories(categoriesData.products).map(
+                  (categoryName: string) => (
+                    <Slide key={categoryName} title={categoryName} />
+                  )
                 )
-              )}
-            </Carousel>
-          </div>
-        </section>
-      )}
+              : Array(4)
+                  .fill(null)
+                  .map(() => <Slide.Loading />)}
+          </Carousel>
+        </div>
+      </section>
       {/* featured section */}
-      {featuredLoading ? (
-        <section className="mb-32 flex items-center justify-center">
-          <Spinner size="lg" />
-        </section>
-      ) : (
-        <ProductsSection
-          title="featured items"
-          secondaryText="view all products"
-          products={featuredData.products}
-        />
-      )}
-
+      <ProductsSection
+        isLoading={featuredLoading}
+        title="featured items"
+        secondaryText="view all products"
+        products={featuredData?.products}
+      />
       {/* on sale section */}
-      {onSaleLoading ? (
-        <section className="mb-32 flex items-center justify-center">
-          <Spinner size="lg" />
-        </section>
-      ) : (
-        <ProductsSection
-          title="on sale items"
-          secondaryText="view all products"
-          products={onSaleData.products}
-        />
-      )}
+      <ProductsSection
+        isLoading={onSaleLoading}
+        title="on sale items"
+        secondaryText="view all products"
+        products={onSaleData?.products}
+      />
 
       {/* newsletter */}
       <section className="mb-7 pt-32 pb-10 md:mb-10">
@@ -109,27 +94,4 @@ export const Home = () => {
       </section>
     </main>
   );
-
-  function Slide({ title }: { title: string }) {
-    const Icon = getIcon(title);
-    return (
-      <div className="group relative my-4 mr-2 ml-3 overflow-hidden rounded-md bg-brand-pink-50 bg-contain bg-right bg-no-repeat p-4 shadow">
-        <Icon className="absolute bottom-12 right-4 h-20 w-20 text-white duration-300 group-hover:text-brand-pink-200 md:bottom-4 md:right-4 md:h-36 md:w-36" />
-        <div className="mb-20 md:mb-24">
-          <p className="mb-2 text-xl font-bold capitalize text-brand-pink-900 md:text-2xl">
-            {title}
-          </p>
-          <p className="max-w-[14rem] text-brand-pink-900 opacity-80">
-            Great products at amazing prices.
-          </p>
-        </div>
-        <Link
-          to={`products?category=${title}`}
-          className="rounded-md bg-white py-2 px-8 text-base font-semibold text-brand-pink-900 shadow-md duration-200 hover:bg-brand-pink-100"
-        >
-          Shop Now
-        </Link>
-      </div>
-    );
-  }
 };
