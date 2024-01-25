@@ -4,12 +4,18 @@ import { IProduct } from '..';
 import ProductCard from './ProductCard';
 
 interface Props {
-  products: IProduct[];
+  products?: IProduct[];
   title?: string;
   secondaryText?: string;
+  isLoading?: boolean;
 }
 
-const ProductsSection = ({ products, title, secondaryText = '' }: Props) => {
+const ProductsSection = ({
+  products,
+  title,
+  secondaryText = '',
+  isLoading = true,
+}: Props) => {
   return (
     <section className="mb-20 md:mb-24 lg:mb-28">
       <ContentWrapper>
@@ -25,9 +31,15 @@ const ProductsSection = ({ products, title, secondaryText = '' }: Props) => {
           </Link>
         </div>
         <div className="grid grid-cols-1 justify-items-center gap-6 gap-x-0 md:grid-cols-2 md:gap-y-16 xl:grid-cols-4">
-          {products.slice(0, 4).map((product) => (
-            <ProductCard product={product} key={product._id} />
-          ))}
+          {products && !isLoading
+            ? products
+                .slice(0, 4)
+                .map((product) => (
+                  <ProductCard product={product} key={product._id} />
+                ))
+            : Array(4)
+                .fill(null)
+                .map(() => <ProductCard.Loading />)}
         </div>
       </ContentWrapper>
     </section>

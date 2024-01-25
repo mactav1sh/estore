@@ -8,6 +8,7 @@ export * from './elements/LoadingOverlay';
 export * from './elements/Rating';
 export * from './elements/RatingStars';
 export * from './elements/Spinner';
+export * from './elements/Slide';
 
 // LAYOUT
 export * from './layout/Footer/Footer';

@@ -53,4 +53,21 @@ const ProductCard = ({ product }: { product: IProduct }) => {
   );
 };
 
+ProductCard.Loading = function Loading() {
+  return (
+    <div className="h-80 w-60 animate-pulse rounded-md border bg-white p-2 shadow">
+      <div className="mt-3 mb-2 h-40 w-full bg-slate-200"></div>
+      {/* Description */}
+      <div className="px-3">
+        <div className="mb-2  h-2.5 w-10 bg-slate-200"></div>
+        <div className="mb-2 h-4 w-48 bg-slate-200"></div>
+        {/* rating */}
+        <div className="mb-4 flex h-4 w-8 space-x-1.5 bg-slate-200"></div>
+        {/* price */}
+        <div className="mb-3 h-4 w-16 bg-slate-200"></div>
+      </div>
+    </div>
+  );
+};
+
 export default ProductCard;

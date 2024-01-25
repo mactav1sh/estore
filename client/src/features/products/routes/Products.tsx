@@ -1,6 +1,5 @@
 import { useGetProducts } from '../api/getProducts';
 import { IProduct } from '../types';
-import { LoadingPage } from '../../misc';
 import ProductCard from '../components/ProductCard';
 import { useSearchParams } from 'react-router-dom';
 import { createQueryStr } from '../../../utils';
@@ -19,17 +18,20 @@ export const Products = () => {
 
   const { isLoading, data } = useGetProducts(queryStr, queryStr);
 
-  if (isLoading) return <LoadingPage />;
   return (
     <main className="flex min-h-screen flex-col items-center justify-center space-y-12 bg-slate-50 px-2 pb-16 pt-32">
       {/* MAIN CONTENT */}
-      {data.products && data.products.length > 0 ? (
-        <div className="grid w-full grid-cols-1 justify-items-center gap-y-8 rounded-md p-2.5 md:w-auto md:grid-cols-2 md:gap-7 lg:grid-cols-4">
-          {data.products.map((product: IProduct) => (
-            <ProductCard product={product} key={product._id} />
-          ))}
-        </div>
-      ) : (
+      <div className="grid w-full grid-cols-1 justify-items-center gap-y-8 rounded-md p-2.5 md:w-auto md:grid-cols-2 md:gap-7 lg:grid-cols-4">
+        {!isLoading && data?.products
+          ? data.products.map((product: IProduct) => (
+              <ProductCard product={product} key={product._id} />
+            ))
+          : Array(8)
+              .fill(null)
+              .map(() => <ProductCard.Loading />)}
+      </div>
+
+      {data?.products && data?.products.length <= 0 && (
         <p className="text-center text-2xl font-semibold capitalize text-gray-500">
           No products found
         </p>
@@ -50,7 +52,7 @@ export const Products = () => {
           onClick={() => {
             setPage((p) => p + 1);
           }}
-          disabled={!data.products || data.products.length < 12}
+          disabled={!data?.products || data?.products.length < 12}
         >
           Next
         </button>
