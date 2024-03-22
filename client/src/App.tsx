@@ -5,7 +5,7 @@ import { Product, Products } from './features/products';
 import { Cart } from './features/cart';
 import { Home } from './features/misc';
 import { Footer, Header } from './components';
-import { OrderConfirmationForm } from './features/Orders';
+import { OrderConfirmationForm } from './features/order';
 import ProtectedRoute from './lib/Authorization';
 
 function App() {

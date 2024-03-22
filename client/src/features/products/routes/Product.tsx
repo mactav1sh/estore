@@ -39,15 +39,15 @@ export const Product = () => {
         {/* MAIN CONTENT */}
         <div className="flex w-full flex-col items-center justify-center space-y-6 rounded-md bg-white px-5 py-8 shadow-md md:h-96 md:flex-row md:space-y-0 md:space-x-16 md:pr-8">
           {/* IMAGE */}
-          <div className="max-w-xs self-center">
+          <div className="my-10 mx-14 max-w-xs self-center">
             <img
               src={imgUrl}
               alt={data.product.title}
-              className="rounded-t-md md:rounded-t-none md:rounded-l-md"
+              className="w-48 rounded-t-md md:rounded-t-none md:rounded-l-md"
             />
           </div>
           {/* CONTENT */}
-          <div className="flex max-w-lg flex-col items-center  md:max-w-none lg:w-[28rem]">
+          <div className="flex max-w-lg flex-col items-center  md:max-w-none lg:w-80">
             {/* - TITLE AND DESC */}
             <div className="mb-9 w-72 md:mb-12 md:w-full md:text-left">
               <div className="flex items-center space-x-3">

@@ -35,11 +35,11 @@ const ProductsSection = ({
             ? products
                 .slice(0, 4)
                 .map((product) => (
-                  <ProductCard product={product} key={product._id} />
+                  <ProductCard product={product} key={title + product._id} />
                 ))
             : Array(4)
                 .fill(null)
-                .map(() => <ProductCard.Loading />)}
+                .map(() => <ProductCard.Loading key={Math.random() * 100} />)}
         </div>
       </ContentWrapper>
     </section>

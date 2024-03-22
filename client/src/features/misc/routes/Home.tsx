@@ -47,7 +47,7 @@ export const Home = () => {
                 )
               : Array(4)
                   .fill(null)
-                  .map(() => <Slide.Loading />)}
+                  .map(() => <Slide.Loading key={Math.random() * 100} />)}
           </Carousel>
         </div>
       </section>
